@@ -17,6 +17,6 @@ supported formats are:
 	
  * TRS-80    ; needs some further testing
 
-	* VORTEX
+* VORTEX
 
  * ALPHA
