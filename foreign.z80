@@ -26,8 +26,8 @@
 ;* 		change log 03/19/2023						*
 ;*  Possible alian disk formats limited to 80 char in sum			*
 ;*  reduced to 8 bytes per name compared to 10 bytes to the origin		*
-;*					03/24/2023				*
-;* 		no success with MM-D80 due conflicting information		*
+;*					03/26/2023				*
+;* 		updated MM-D80 skew table fixed 		*
 ;********************************************************************************
 
 ; Define constants for special characters and BDOS functions
