@@ -8,7 +8,8 @@
 ;* 				(c) 1992					*
 ;* 										*
 ;* 		Update	for sdltrs emulator (c) 2023 				*
-;* 		first assembler code sinc 30yrs E. Schroeer			*
+;* 		first assembler code since 30yrs E. Schroeer 			*
+;*	 with crowd knowledge of Jens Guenther & Fritz Chwolka 	:)		*
 ;* 			added: 							*
 ;*			TRS80 format: TRS80					*
 ;*			MONTEZUMA CP/M format: MM-D80				*
@@ -27,7 +28,7 @@
 ;*  Possible alian disk formats limited to 80 char in sum			*
 ;*  reduced to 8 bytes per name compared to 10 bytes to the origin		*
 ;*					03/26/2023				*
-;* 		updated MM-D80 skew table fixed 		*
+;* 		updated MM-D80 skew table fixed the bug				*
 ;********************************************************************************
 
 ; Define constants for special characters and BDOS functions
