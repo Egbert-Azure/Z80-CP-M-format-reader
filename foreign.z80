@@ -403,7 +403,7 @@ kontron	dw	0020h		; SPT : 128 byte records / track
 	db	   16		; length of the skew table
         			; skew table
 	db	  0,3,6,9,12,15,2,5,8,11,14,1,4,7,10,13
-
+	db 	  2,5,8,11,14,1,4,7,10,13,0,3,6,9,12,15
 
 rair	dw	0004h		; SPT : 128 byte records / track
 	db	  04h		; BSH : block shift
