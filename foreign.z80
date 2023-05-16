@@ -32,7 +32,6 @@
 ;*					05/14/2023				*
 ;*		additional formats added by Jens Guenther			*
 ;********************************************************************************
-
 ; Define constants for special characters and BDOS functions
 bel   equ 07h   ; character to be displayed on the screen
 cr    equ 0dh   ; carriage return character
@@ -58,38 +57,38 @@ start	ld hl, xtail     ; the entered name must be saved
 	ld de, nambuff   ; in a buffer to prevent overwriting
 	ld bc, 8
 	ldir
-	
+
 	ld de, hallo     ; DE points to the greeting message
 	ld c, prtstr     ; BDOS call #9 to print a string
 	call bdos        ; until the end character '$'
-	
+
 	ld hl, startlist ; HL points to the start of the name list
 	ld (buff), hl    ; save it in a buffer for later use
-	
+
 loopy	ld de, nambuff   ; DE points to the entered name
-	
+
 loopx	ld a, (de)       ; has the end of the name been reached?
 	cp 00h
 	jr z, einstell   ; if yes, then a valid name has been entered
-	
+
 	cp (hl)          ; otherwise, compare with the list entry
 	jr nz, dernicht  ; if incorrect character, move to next entry
-	
+
 	inc hl           ; if correct, move DE and HL one byte further
 	inc de
 	jr loopx         ; and continue
-	
+
 dernicht
 	ld hl, (buff)    ; reset HL to the beginning of the buffer
-	ld bc, 11        ; move to the end of the current entry
+	ld bc, 13        ; move to the end of the current entry
 	add hl, bc
 	ld a, (hl)       ; check if the end of the list has been reached
 	cp 00h
 	jr z, falsename  ; if no name has been recognized, ERROR
-	
+
 	ld (buff), hl    ; save HL in buffer
 	jr loopy         ; repeat the loop
-	
+
 ; FALSENAME
 ; If an incorrect foreign format name is entered, the list of all valid names is outputted.
 
@@ -103,12 +102,15 @@ loop
     ld c,prtstr       ; All names are outputted until the end marker '00'.
     call bdos
     ld hl,(buff)
-    ld bc,11          ; The names are 11 bytes apart.
+    ld bc,13          ; The names are 13 bytes apart.
     add hl,bc         ; HL now points to the next name or '00'.
     ex de,hl          ; DE is loaded with HL
     ld a,(de)         ; for BDOS-Call #9.
     cp 00
     jr nz,loop        ; Loop until the last name is outputted.
+    ld de,wrapoff     ; Turn off automatic word wrap
+    ld c,prtstr
+    call bdos
     ld c,wboot        ; Then warm start and return to operating system.
     call bdos
 
@@ -135,7 +137,7 @@ einstell
 ; Copy the DPB to Common
 
 	ld hl, (buff)       ; HL points to the name of the chosen format
-	ld bc, 9            ; After 9 bytes comes the address of the corresponding parameter block, starting with the DPB
+	ld bc, 11           ; After 11 bytes comes the address of the corresponding parameter block, starting with the DPB
 	add hl, bc
 	ld e, (hl)          ; De points to the DPB to be loaded
 	inc hl              ; HL points to the valid DPB in Common
@@ -180,7 +182,7 @@ einstell
 
 	ld hl, (buff)       ; Points to the name of the chosen format
 	ld de, eintrag      ; It is copied into the output string
-	ld bc, 8
+	ld bc, 10
 	ldir
 	ld de, gutis        ; Points to the message
 	ld c, prtstr        ; BDOS-Call String output
@@ -190,18 +192,19 @@ einstell
 
 ; List of character strings to output
 
-hallo 	db cr, lf, esc, 'R', 'FOREIGN.COM', esc, 'S', ' sets drive P to foreign formats.', cr, lf
-      	db '  Only for Genie IIIs with Holte CP/M +!', cr, lf, '$'
-err1  	db cr, lf, bel, bel, 'Incorrect format name specified !!!!!!!!!!!', cr, lf
-err2  	db 'The following format names are allowed:', cr, lf, lf, '$'
-gutis 	db cr, lf, 'The new format '
+hallo 	db cr, lf, esc, 'R', 'FOREIGN.COM', esc, 'S'
+      	db ' sets drive P to foreign formats on Genie IIIs with Holte CP/M +', cr, lf, '$'
+err1  	db cr, lf, 'Incorrect format name specified!', cr, lf
+err2  	db 'The following format names are allowed:', cr, lf, lf, esc, 'X', '$'
+wrapoff db esc, 'Y', '$'
+gutis 	db cr, lf, 'New format now valid for drive P: '
 eintrag ds 8
-      	db 'is now valid for drive P!', cr, lf, '$'
+	db cr, lf, '$'
 
 ; Intermediate buffer for register pair DE or HL
 buff        dw      0000h
 buff2       dw      0000h      ; contains the address of the XDPH of LW P
-nambuff     ds      8          ; the selected name is saved here to prevent overwriting by CP/M
+nambuff     ds      10         ; the selected name is saved here to prevent overwriting by CP/M
 
 biospb                         ; The BIOS PARAMETER BLOCK must be specified
 fnum        db      22         ; when a direct BIOS call is made through BDOS-Call 50
@@ -226,10 +229,9 @@ dct         db      0
 dphend                          ; End of this buffer
 
 ; List of possible foreign formats
-; The length of the character string is limited to 8.
+; The length of the character string is limited to 10.
 
 startlist
-	startlist
 	db	'ALPHA     $'
 	dw	alpha
 	db	'ASTER-3S  $'
@@ -280,6 +282,7 @@ startlist
 	dw	vortex
 	db	00
 endlist
+
 
 ; Klaus Kaempf CP/M 2.2x/3.0 System (80T, DS, DD, 768K, 1024 Bytes)
 s80dsdd	dw	0050h		; SPT : 128 byte records / track
@@ -826,6 +829,7 @@ mmd80	dw	0050h		; SPT : 128 byte records / track
 				; skew table
 	db	0,2,4,6,8,1,3,5,7,9,10,12,14,16,18,11,13,15,17,19
 
+
 ; Morrow Micro Decision (40T, SS, DD, 190K, 1024 Bytes, Skew 3)
 morrow	dw	0028h		; SPT : 128 byte records / track
 	db	  04h		; BSH : block shift
@@ -849,6 +853,7 @@ morrow	dw	0028h		; SPT : 128 byte records / track
 	db	  5		; length of the skew table
 				; skew table
 	db	 0,3,1,4,2
+
 
 ; Morrow Micro Decision MD3 (40T, DS, DD, 390K, 1024 Bytes, Skew 3)
 md3ds	dw	0050h		; SPT : 128 byte records / track
@@ -899,5 +904,5 @@ schmid	dw	0050h		; SPT : 128 byte records / track
 				; skew table
 	db	 0,4,3,2,1,5,9,8,7,6
 
-end	start
 
+end	start
