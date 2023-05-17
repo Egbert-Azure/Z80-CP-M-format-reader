@@ -157,7 +157,7 @@ einstell
 	call xmove
 	ex de, hl           ; DE is the source address
 	ld hl, (buff2)      ; Address of the XDPH in Bank 0
-	ld bc, 25           ; After the XDPH of Drive P comes its DCT, which is where it should go
+	ld bc, 25           ; After the  XDPH of Drive P comes its DCT, which is where it should go
 	add hl, bc
 	ld bc, 5            ; 5 bytes
 	call move           ; Move data from DE to HL
