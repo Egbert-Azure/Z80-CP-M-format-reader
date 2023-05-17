@@ -41,7 +41,7 @@ supported formats are:
 - MSDOS
 - S80-DD: Klaus Kaempf CP/M 2.2x/3.0 System (80T, DS, DD, 768K, 1024 Bytes)
 - D80-DD: Klaus Kaempf CP/M 2.2x/3.0 Data (80T, DS, DD, 800K, 1024 Bytes)
-- KAYPRO-2:Kaypro II (40T, SS, DD, 196K, 512 Bytes)
+- KAYPRO-2: Kaypro II (40T, SS, DD, 196K, 512 Bytes)
 - KAYPRO-4
 - KONTRON: still has bugs
 - LNW-80
