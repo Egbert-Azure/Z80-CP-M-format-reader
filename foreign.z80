@@ -238,8 +238,8 @@ startlist
 	dw	aster3s
 	db	'HOLTE-G3  $'
 	dw	holteg3
-	db	'IBM-PC    $'
-	dw	ibmpc
+	db	'MSDOS    $'
+	dw	MSDOS
 	db	'S80-DD    $'
 	dw	s80dsdd
 	db	'D80-DD    $'
@@ -431,7 +431,7 @@ holteg3	dw	0050h		; SPT : 128 byte records / track
 	db	  0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19
 
 
-ibmpc	dw	0020h		; SPT : 128 byte records / track
+MSDOS	dw	0020h		; SPT : 128 byte records / track
 	db	  04h		; BSH : block shift
 	db	  0fh		; BSM : block mask
 	db	  01h		; EXM : extend mask
