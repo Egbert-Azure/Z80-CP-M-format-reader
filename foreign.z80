@@ -189,17 +189,21 @@ einstell
 	call bdos           ; Execute
 	ld c, wboot         ; Warmstart back to the operating system
 	call bdos
+; Set the version of foreign.com
+        ld hl, version   ; HL points to the version string
+        ld c, prtstr     ; BDOS call #9 to print a string
+        call bdos        ; print the version
 
 ; List of character strings to output
-
-hallo 	db cr, lf, esc, 'R', 'FOREIGN.COM', esc, 'S'
-      	db ' sets drive P to foreign formats on Genie IIIs with Holte CP/M +', cr, lf, '$'
-err1  	db cr, lf, 'Incorrect format name specified!', cr, lf
-err2  	db 'The following format names are allowed:', cr, lf, lf, esc, 'X', '$'
-wrapoff db esc, 'Y', '$'
-gutis 	db cr, lf, 'New format now valid for drive P: '
-eintrag ds 8
-	db cr, lf, '$'
+hallo 		db 	cr, lf, esc, 'R', 'FOREIGN.COM', esc, 'S'
+version		db	cr,lf,esc,'R','Version 1.0',cr,lf,'$'
+      		db ' sets drive P to foreign formats on Genie IIIs with Holte CP/M +', cr, lf, '$'
+err1  		db cr, lf, 'Incorrect format name specified!', cr, lf
+err2  		db 'The following format names are allowed:', cr, lf, lf, esc, 'X', '$'
+wrapoff 	db esc, 'Y', '$'
+gutis 		db cr, lf, 'New format now valid for drive P: '
+eintrag 	ds 8
+		db cr, lf, '$'
 
 ; Intermediate buffer for register pair DE or HL
 buff        dw      0000h
