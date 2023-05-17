@@ -1,7 +1,9 @@
+<div align="center">
+
 # Z80-CP/M Format Reader
 
-**Utility for Genie IIIs with Holte CP/M Plus**
-**Created by Volker Dose & Egbert Schroeer**
+**Utility for Genie IIIs with Holte CP/M Plus**\
+**Created by Volker Dose & Egbert Schroeer**\
 **(c) 1992**
 
 **Update for sdltrs emulator (c) 2023**
@@ -10,7 +12,7 @@
 
 **With crowd knowledge of Jens Guenther & Fritz Chwolka :)**
 
-## Description
+</div>
 
 This utility allows reading various foreign formats using HOLTE-CP/M on Genie IIIs with Holte CP/M Plus. It provides support for the following foreign disk formats:
 
