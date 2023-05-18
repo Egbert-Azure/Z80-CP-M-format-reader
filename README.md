@@ -38,7 +38,8 @@ Output of the possible disk formats was truncated in 'foreign' after one line. I
 - 05/17/2023: Added functionality to automatically enable 'automatic line break' using the screen control code ESC X, allowing all entries to be displayed in the 'foreign' output.Implemented the option to turn off 'automatic line break' after displaying the list. Updated the length back to 10 characters for a more organized and visually appealing listing.
 
 Please refer to the source code for further details and implementation.
-supported formats are:
+
+## Supported formats are:
 
 - ALPHA
 - ASTER-3S
