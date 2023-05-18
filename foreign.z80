@@ -84,8 +84,7 @@ dernicht
 	add hl, bc
 	ld a, (hl)       ; check if the end of the list has been reached
 	cp 00h
-	jr z, falsename  ; if no name has been recognized, ERROR
-
+	jr	z,falsename  ; if no listed name has been recognized, ERROR
 	ld (buff), hl    ; save HL in buffer
 	jr loopy         ; repeat the loop
 
