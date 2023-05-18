@@ -43,26 +43,26 @@ Please refer to the source code for further details and implementation.
 
 - ALPHA
 - ASTER-3S
-- HOLTE-G3: Thomas Holte CP/M 2.2c/3.0a (80T, DS, DD, 768K, 512 Bytes)
+- HOLTE-G3:   Thomas Holte CP/M 2.2c/3.0a (80T, DS, DD, 768K, 512 Bytes)
 - MSDOS
-- S80-DD: Klaus Kaempf CP/M 2.2x/3.0 System (80T, DS, DD, 768K, 1024 Bytes)
-- D80-DD: Klaus Kaempf CP/M 2.2x/3.0 Data (80T, DS, DD, 800K, 1024 Bytes)
-- KAYPRO-2: Kaypro II (40T, SS, DD, 196K, 512 Bytes)
-- KAYPRO-4
-- KONTRON: still has bugs
-- LNW-80
-- LOWE-A1
-- LOWE-A2
-- LOWE-B2
-- MM-S40
-- MM-D40
-- MM-S80
-- MM-D80
-- MATTES: still has bugs
-- MORROW
-- MD3
-- PROF#4
-- RAIR
+- S80-DD:     Klaus Kaempf CP/M 2.2x/3.0 System (80T, DS, DD, 768K, 1024 Bytes)
+- D80-DD:     Klaus Kaempf CP/M 2.2x/3.0 Data (80T, DS, DD, 800K, 1024 Bytes)
+- KAYPRO-2:   Kaypro II (40T, SS, DD, 196K, 512 Bytes)
+- KAYPRO-4:   Kaypro 4 & 10 (40T, DS, DD, 392K, 512 Bytes)
+- KONTRON:    still has bugs
+- LNW-80:     LNW Research LNW80 (40T, SS, DD, 166K, 256 Bytes, Skew 5)
+- LOWE-A1:    Lowe Electronics CP/M 2.2a (80T, SS, DD, 346K, 256 Bytes)
+- LOWE-A2:    Lowe Electronics CP/M 2.2a (80T, DS, DD, 696K, 256 Bytes)
+- LOWE-B2:    Lowe Electronics CP/M 2.2b (80T, SS, DD, 384K, 256 Bytes, 4K Block)
+- MM-S40:     Montezuma Micro 40T Standard SYSTEM (40T, SS, DD, 170K, 256 Bytes, Skew 2)
+- MM-D40:     Montezuma Micro 40T Standard DATA (40T, SS, DD, 200K, 512 Bytes, Skew 2)
+- MM-S80:     Montezuma Micro 80T DS SYSTEM (80T, DS, DD, 710K, 256 Bytes, Skew 2)
+- MM-D80:     Montezuma Micro 80T DS DATA (80T, DS, DD, 800K, 512 Bytes, Skew 2)
+- MATTES:     still has bugs
+- MORROW:     Morrow Micro Decision (40T, SS, DD, 190K, 1024 Bytes, Skew 3)
+- MD3:        Morrow Micro Decision MD3 (40T, DS, DD, 390K, 1024 Bytes, Skew 3)
+- PROF#4:     Schmidtke Genie I CP/M 2.2 System (80T, DS, DD, 768K, 1024 Bytes)
+- RAIR:       
 - SCHMIDTKE
 - VORTEX
 
