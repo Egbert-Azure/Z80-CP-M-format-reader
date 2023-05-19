@@ -185,15 +185,14 @@ einstell
 	call bdos
 
 ; List of character strings to output
-hallo 		db 	cr, lf, esc, 'R', 'FOREIGN.COM', esc, 'S'
-version        db    cr,lf,esc,'R','Version 2.0',esc,'S',cr,lf,'$'
-      		db ' sets drive P to foreign formats on Genie IIIs with Holte CP/M +', cr, lf, '$'
-err1  		db 	cr, lf, 'Incorrect format name specified!', cr, lf
-err2  		db 'The following format names are allowed:', cr, lf, lf, esc, 'X', '$'
-wrapoff 	db esc, 'Y', '$'
-gutis 		db cr, lf, 'New format now valid for drive P: '
-eintrag 	ds 10
-		db cr, lf, '$'
+hallo	db	13,10,27,'R','FOREIGN.COM - Version 2.0',27,'S'
+	db	13,10,'sets drive P to alien disk formats on Genie IIIs with Holte CP/M +',13,10,'$'
+err1 	db 	13,10,'Incorrect format name specified!',13,10
+err2 	db 	'The following format names are allowed:',13,10,13,10,27,'X','$'
+wrapoff db 27,'Y','$'
+gutis 	db 13,10,'New format now valid for drive P: '
+eintrag ds 10
+	db 13,10,'$'
 
 ; Intermediate buffer for register pair DE or HL
 buff        dw      0000h
