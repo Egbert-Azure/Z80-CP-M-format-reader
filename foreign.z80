@@ -223,13 +223,13 @@ dphend                          ; End of this buffer
 
 ; List of possible foreign formats
 ; The length of the character string is limited to 10.
-
+; lower letters in db 'name $' signals: not working properly
 startlist
 	db	'MM-D80    $'	; first entry is default - MONTEZUMA CP/M format: MM-D80 - exchange format via TRSTOOLS
 	dw	mmd80		; Montezuma Micro 80T DS DATA (80T, DS, DD, 800K, 512 Bytes, Skew 2)
 	db	'ALPHA     $'
 	dw	alpha
-	db	'ASTER-3S  $'
+	db	'ASTER-3S  $'	;Aster CT-80 System (80T, DS, DD, 780K, 1024 Bytes)
 	dw	aster3s
 	db	'HOLTE-G3  $'	; Thomas Holte CP/M 2.2c/3.0a (80T, DS, DD, 768K, 512 Bytes)
 	dw	holteg3
@@ -241,7 +241,7 @@ startlist
 	dw	d80dsdd
 	db	'KAYPRO-2  $'	; Kaypro II (40T, SS, DD, 196K, 512 Bytes)
 	dw	kaypro2
-	db	'KAYPRO-4  $'	; Kaypro 4 & 10 (40T, DS, DD, 392K, 512 Bytes)
+	db	'Kaypro-4  $'	; Kaypro 4 & 10 (40T, DS, DD, 392K, 512 Bytes)
 	dw	kaypro4
 	db	'Kontron   $'
 	dw	kontron
