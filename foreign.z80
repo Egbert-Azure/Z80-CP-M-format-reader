@@ -241,8 +241,8 @@ startlist
 	dw	kaypro2
 	db	'KAYPRO-4  $'
 	dw	kaypro4
-;	db	'KONTRON   $'
-;	dw	kontron
+	db	'Kontron   $'
+	dw	kontron
 	db	'LNW-80    $'
 	dw	lnw80
 	db	'LOWE-A1   $'
@@ -259,25 +259,25 @@ startlist
 	dw	mms80
 	db	'MM-D80    $'
 	dw	mmd80
-;	db	'MATTES    $'
-;	dw	mattes
+	db	'Mattes    $'
+	dw	mattes
 	db	'MORROW    $'
 	dw	morrow
 	db	'MD3       $'
 	dw	md3ds
 	db	'PROF#4    $'
 	dw	prof4
-	db	'Osborne   $'
+	db	'OOSBORNE   $'
 	dw	osborne
-	db	'Osbexec   $'
+	db	'OSBEXEC   $'
 	dw	osbexec
-	db	'Rainbow   $'
+	db	'RAINBOW   $'
 	dw	rainbow
 	db	'RAIR      $'
 	dw	rair
 	db	'SCHMIDTKE $'
 	dw	schmid
-	db	'tv802     $'
+	db	'TV802     $'
 	dw	tv802
 	db	'VORTEX    $'
 	dw	vortex
