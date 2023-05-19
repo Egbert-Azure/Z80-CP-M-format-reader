@@ -88,12 +88,12 @@ dernicht
 
 falsename              ; Subroutine for incorrect foreign format name
     ld de,err1         ; Error message string
-    ld c,prtstr       ; BDOS-Call #9, output string
+    ld c, prtstr       ; BDOS-Call #9, output string
     call bdos
     ld de,startlist   ; First element in the list of valid names,
 loop
     ld (buff),de       ; stored to be incremented later.
-    ld c,prtstr       ; All names are outputted until the end marker '00'.
+    ld c, prtstr       ; All names are outputted until the end marker '00'.
     call bdos
     ld hl,(buff)
     ld bc,13          ; The names are 13 bytes apart.
