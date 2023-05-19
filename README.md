@@ -42,7 +42,7 @@ Please refer to the source code for further details and implementation.
 ## Supported formats
 
 ## Startlist
-
+(lower letters in `db 'name $'` signals: not working properly)
 - `db 'MM-D80    $'`  
   - Description: Default - MONTEZUMA CP/M format: MM-D80 - exchange format via TRSTOOLS
   - Format: Montezuma Micro 80T DS DATA (80T, DS, DD, 800K, 512 Bytes, Skew 2)
@@ -53,9 +53,9 @@ Please refer to the source code for further details and implementation.
   - Format: N/A
   - Variable: `dw alpha`
 
-- `db 'ASTER-3S  $'`  
-  - Description: ASTER-3S
-  - Format: N/A
+- `db 'ASTER-3S  $'`
+  - Description: Aster CT-80 System
+  - Format: (80T, DS, DD, 780K, 1024 Bytes)
   - Variable: `dw aster3s`
 
 - `db 'HOLTE-G3  $'`  
