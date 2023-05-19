@@ -110,7 +110,7 @@ Please refer to the source code for further details and implementation.
 
 - `db 'LOWE-B1   $'`  
   - Description: Lowe Electronics CP/M 2.2b
-  - Format: (80T, SS
+  - Format: (80T, SS)
 - `db 'LOWE-B2   $'`
   - Description: Lowe Electronics CP/M 2.2b
   - Format: (80T, DS, DD, 696K, 256 Bytes, 4K Block)
@@ -147,7 +147,7 @@ Please refer to the source code for further details and implementation.
   - Variable: `dw md3ds`
 
 - `db 'PROF#4    $'`
-  - Description: Not working properly
+  - Description: N/A
   - Format: N/A
   - Variable: `dw prof4`
 
