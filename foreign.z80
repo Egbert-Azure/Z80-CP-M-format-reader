@@ -23,17 +23,12 @@
 ;* 		2. The DTB drive control table 					*
 ;* 		3. The sector translation table 				*
 ;* 		They must be created manually first				*
-;* 										*
-;* 		change log 03/19/2023						*
-;*  Possible alian disk formats limited to 80 char in sum			*
-;*  reduced to 8 bytes per name compared to 10 bytes to the origin		*
 ;*					03/26/2023				*
 ;* 		updated MM-D80 skew table fixed the bug				*
 ;*					05/14/2023				*
 ;*		additional formats added by Jens Guenther			*
 ;********************************************************************************
 ; Define constants for special characters and BDOS functions
-bel   equ 07h   ; character to be displayed on the screen
 cr    equ 0dh   ; carriage return character
 lf    equ 0ah   ; line feed character
 esc   equ 1bh   ; escape character
@@ -237,7 +232,7 @@ startlist
 	dw	aster3s
 	db	'HOLTE-G3  $'
 	dw	holteg3
-	db	'MSDOS    $'
+	db	'MS-DOS    $'
 	dw	MSDOS
 	db	'S80-DD    $'
 	dw	s80dsdd
