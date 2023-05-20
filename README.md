@@ -26,7 +26,7 @@ HOLTE-CP/M requires the following information to read foreign formats:
 3. The sector translation table
 
 These parameters must be created manually beforehand.
-Default format is MM-D80 aka MONTEZUMA CP/M format
+Default format is MM-D80 aka MONTEZUMA CP/M format.
 
 ![Screenshot 2023-05-20 085231](https://github.com/Egbert-Azure/Z80-CP-M-format-reader/assets/55332675/fdabdd6e-a530-444a-bb07-06de9e116463)
 
