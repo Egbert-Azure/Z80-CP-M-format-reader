@@ -188,7 +188,7 @@ einstell
 hallo	db	13,10,27,'R','FOREIGN.COM - Version 2.0',27,'S'
 	db	13,10,'sets drive P to alien disk formats on Genie IIIs with Holte CP/M +',13,10,'$'
 err1 	db 	13,10,'Incorrect format name specified!',13,10
-err2 	db 	'The following format names are allowed:',13,10,13,10,27,'X','$'
+ 	db 	'The following format names are allowed:',13,10,13,10,27,'X','$'
 wrapoff db 27,'Y','$'
 gutis 	db 13,10,'New format now valid for drive P: '
 eintrag ds 10

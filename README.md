@@ -48,9 +48,9 @@ Please refer to the source code for further details and implementation.
   - Format: Montezuma Micro 80T DS DATA (80T, DS, DD, 800K, 512 Bytes, Skew 2)
   - Variable: `dw mmd80`
 
-- `db 'ALPHA     $'`  
-  - Description: ALPHA
-  - Format: N/A
+- `db 'ALPHA     $'`
+  - Description: Alphatronic P3
+  - Format: (80T, DS, DD, 790K, 1024 Bytes)
   - Variable: `dw alpha`
 
 - `db 'ASTER-3S  $'`
@@ -88,9 +88,9 @@ Please refer to the source code for further details and implementation.
   - Format: (40T, DS, DD, 392K, 512 Bytes)
   - Variable: `dw kaypro4`
 
-- `db 'Kontron   $'`  
-  - Description: Kontron
-  - Format: N/A
+- `db 'Kontron   $'`
+  - Description: KONTRON PSI 908/9C/98
+  - Format: (77T, DS, DD, 256 Bytes, Skew 3)
   - Variable: `dw kontron`
 
 - `db 'LNW-80    $'`  
@@ -132,8 +132,8 @@ Please refer to the source code for further details and implementation.
   - Variable: `dw mms80`
 
 - `db 'Mattes    $'`
-  - Description: Not working properly
-  - Format: N/A
+  - Description: Eberhard Mattes Genie I CP/M 2.2
+  - Format: (80T, DS, DD, 780K, 512 Bytes)
   - Variable: `dw mattes`
 
 - `db 'MORROW    $'`
@@ -147,8 +147,8 @@ Please refer to the source code for further details and implementation.
   - Variable: `dw md3ds`
 
 - `db 'PROF#4    $'`
-  - Description: N/A
-  - Format: N/A
+  - Description: Prof80 (Format IV)
+  - Format: (80T, DS, DD, 770K, 512 Bytes, Skew 2)
   - Variable: `dw prof4`
 
 - `db 'OSBORNE   $'`
@@ -190,8 +190,8 @@ Please refer to the source code for further details and implementation.
   - Variable: `dw tv802`
 
 - `db 'VORTEX    $'`
-  - Description: Amstrad CPC - exchange format Z-System for CP/M-Plus disks
-  - Format: N/A
+  - Description: Amstrad CPC Vortex
+  - Format: (80T, DS, DD, 712K, 512 Bytes)
   - Variable: `dw vortex`
 
 - `db 'ZORBA     $'`
