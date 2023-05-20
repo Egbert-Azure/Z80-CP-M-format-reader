@@ -227,7 +227,7 @@ dphend                          ; End of this buffer
 startlist
 	db	'MM-D80    $'	; first entry is default - MONTEZUMA CP/M format: MM-D80 - exchange format via TRSTOOLS
 	dw	mmd80		; Montezuma Micro 80T DS DATA (80T, DS, DD, 800K, 512 Bytes, Skew 2)
-	db	'ALPHA     $'
+	db	'ALPHA     $'	; Alphatronic P3 (80T, DS, DD, 790K, 1024 Bytes)
 	dw	alpha
 	db	'ASTER-3S  $'	;Aster CT-80 System (80T, DS, DD, 780K, 1024 Bytes)
 	dw	aster3s
@@ -243,7 +243,7 @@ startlist
 	dw	kaypro2
 	db	'Kaypro-4  $'	; Kaypro 4 & 10 (40T, DS, DD, 392K, 512 Bytes)
 	dw	kaypro4
-	db	'Kontron   $'
+	db	'Kontron   $'	; KONTRON PSI 908/9C/98 (77T, DS, DD, 256 Bytes, Skew 3)
 	dw	kontron
 	db	'LNW-80    $'	; LNW Research LNW80 (40T, SS, DD, 166K, 256 Bytes, Skew 5)
 	dw	lnw80
@@ -262,12 +262,12 @@ startlist
 	db	'MM-S80    $'	; Montezuma Micro 80T DS SYSTEM (80T, DS, DD, 710K, 256 Bytes, Skew 2)
 	dw	mms80
 	db	'Mattes    $'	; not working properly
-	dw	mattes
+	dw	mattes		; Eberhard Mattes Genie I CP/M 2.2 (80T, DS, DD, 780K, 512 Bytes)
 	db	'MORROW    $'	; Morrow Micro Decision (40T, SS, DD, 190K, 1024 Bytes, Skew 3)
 	dw	morrow
 	db	'MD3       $'	; Morrow Micro Decision MD3 (40T, DS, DD, 390K, 1024 Bytes, Skew 3)
 	dw	md3ds
-	db	'PROF#4    $'	; not working properly
+	db	'PROF#4    $'	; Prof80 (Format IV: 80T, DS, DD, 770K, 512 Bytes, Skew 2)
 	dw	prof4
 	db	'OSBORNE   $'	; Osborne 1 (40T, SS, SD, 90K, 256 Bytes, Skew 2)
 	dw	osborne
@@ -285,8 +285,8 @@ startlist
 	dw	schmid
 	db	'TV802     $'	; Televideo 802 (40T, DS, DD, 342K, 256 Bytes)
 	dw	tv802
-	db	'VORTEX    $'	; Amstrad CPC - exchange format Z-System for CP/M-Plus disks
-	dw	vortex
+	db	'VORTEX    $'	; exchange format Z-System for CP/M-Plus disks
+	dw	vortex		; Amstrad CPC Vortex (80T, DS, DD, 712K, 512 Bytes)
 	db	'ZORBA     $'	; Zorba (40T, DS, DD, 390K, 512 Bytes)
 	dw	zorba
 	db	00
