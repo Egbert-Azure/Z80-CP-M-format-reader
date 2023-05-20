@@ -186,7 +186,7 @@ Please refer to the source code for further details and implementation.
 
 - `db 'SCHMIDTKE $'`
   - Description: Schmidtke Genie I CP/M 2.2 System
-  - Format: (80
+  - Format: (80T, DS, DD, 768K, 1024 Bytes)
 - `db 'TV802     $'`
   - Description: Televideo 802
   - Format: (40T, DS, DD, 342K, 256 Bytes)
