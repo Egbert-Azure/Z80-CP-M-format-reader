@@ -1,6 +1,6 @@
 <div align="center">
 
-# Z80-CP/M Format Reader
+# Z80-CP/M and Alien Disk Format Reader
 
 **Utility for Genie IIIs with Holte CP/M Plus**\
 **Created by Volker Dose & Egbert Schroeer**\
