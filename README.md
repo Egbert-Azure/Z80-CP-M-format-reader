@@ -44,168 +44,150 @@ Output of the possible disk formats was truncated in 'foreign' after one line. I
 
 Please refer to the source code for further details and implementation.
 
-## Supported formats
+### CP/M Formats Supported by 'foreign.com Ver 2.0'
 
-## Startlist
-(lower letters in `db 'name $'` signals: not working properly)
-- `db 'MM-D80    $'`  
-  - Description: Default - MONTEZUMA CP/M format: MM-D80 - exchange format via TRSTOOLS
-  - Format: Montezuma Micro 80T DS DATA (80T, DS, DD, 800K, 512 Bytes, Skew 2)
-  - Variable: `dw mmd80`
+- **MM-D80**
+  - Description: Montezuma CP/M format: MM-D80 - exchange format via TRSTOOLS
+  - Variable: `mmd80`
 
-- `db 'ALPHA     $'`
+- **ALPHA**
   - Description: Alphatronic P3
-  - Format: (80T, DS, DD, 790K, 1024 Bytes)
-  - Variable: `dw alpha`
+  - Variable: `alpha`
 
-- `db 'ASTER-3S  $'`
+- **ASTER-3S**
   - Description: Aster CT-80 System
-  - Format: (80T, DS, DD, 780K, 1024 Bytes)
-  - Variable: `dw aster3s`
+  - Variable: `aster3s`
 
-- `db 'HOLTE-G3  $'`  
+- **HOLTE-G3**
   - Description: Thomas Holte CP/M 2.2c/3.0a
-  - Format: (80T, DS, DD, 768K, 512 Bytes)
-  - Variable: `dw holteg3`
+  - Variable: `holteg3`
 
-- `db 'MS-DOS    $'`  
-  - Description: MS-DOS
-  - Format: N/A
-  - Variable: `dw MSDOS`
+- **MS-DOS**
+  - Description: MS-DOS discs
+  - Variable: `MSDOS`
 
-- `db 'S80-DD    $'`  
+- **S80-DD**
   - Description: Klaus Kaempf CP/M 2.2x/3.0 System
-  - Format: (80T, DS, DD, 768K, 1024 Bytes)
-  - Variable: `dw s80dsdd`
+  - Variable: `s80dsdd`
 
-- `db 'D80-DD    $'`  
+- **D80-DD**
   - Description: Klaus Kaempf CP/M 2.2x/3.0 Data
-  - Format: (80T, DS, DD, 800K, 1024 Bytes)
-  - Variable: `dw d80dsdd`
+  - Variable: `d80dsdd`
 
-- `db 'KAYPRO-2  $'`  
+- **KAYPRO-2**
   - Description: Kaypro II
-  - Format: (40T, SS, DD, 196K, 512 Bytes)
-  - Variable: `dw kaypro2`
+  - Variable: `kaypro2`
 
-- `db 'KAYPRO-4  $'`  
+- **Kaypro-4**
   - Description: Kaypro 4 & 10
-  - Format: (40T, DS, DD, 392K, 512 Bytes)
-  - Variable: `dw kaypro4`
+  - Variable: `kaypro4`
 
-- `db 'Kontron   $'`
+- **Kontron**
   - Description: KONTRON PSI 908/9C/98
-  - Format: (77T, DS, DD, 256 Bytes, Skew 3)
-  - Variable: `dw kontron`
+  - Variable: `kontron`
 
-- `db 'LNW-80    $'`  
+- **EAGLE**
+  - Description: Eagle I/II
+  - Variable: `eagle`
+
+- **HOLTEG2S**
+  - Description: Thomas Holte Genie IIs/Speedmaster CP/M 2.2a System
+  - Variable: `holte2s`
+
+- **LNW-80**
   - Description: LNW Research LNW80
-  - Format: (40T, SS, DD, 166K, 256 Bytes, Skew 5)
-  - Variable: `dw lnw80`
+  - Variable: `lnw80`
 
-- `db 'LOWE-A1   $'`  
+- **LOWE-A1**
   - Description: Lowe Electronics CP/M 2.2a
-  - Format: (80T, SS, DD, 346K, 256 Bytes)
-  - Variable: `dw lowea1`
+  - Variable: `lowea1`
 
-- `db 'LOWE-A2   $'`  
+- **LOWE-A2**
   - Description: Lowe Electronics CP/M 2.2a
-  - Format: (80T, DS, DD, 696K, 256 Bytes)
-  - Variable: `dw lowea2`
+  - Variable: `lowea2`
 
-- `db 'LOWE-B1   $'`  
+- **LOWE-B1**
   - Description: Lowe Electronics CP/M 2.2b
-  - Format: (80T, SS)
-- `db 'LOWE-B2   $'`
-  - Description: Lowe Electronics CP/M 2.2b
-  - Format: (80T, DS, DD, 696K, 256 Bytes, 4K Block)
-  - Variable: `dw loweb2`
+  - Variable: `loweb1`
 
-- `db 'MM-S40    $'`
+- **LOWE-B2**
+  - Description: Lowe Electronics CP/M 2.2b
+  - Variable: `loweb2`
+
+- **MM-S40**
   - Description: Montezuma Micro 40T Standard SYSTEM
-  - Format: (40T, SS, DD, 170K, 256 Bytes, Skew 2)
-  - Variable: `dw mms40`
+  - Variable: `mms40`
 
-- `db 'MM-D40    $'`
+- **MM-D40**
   - Description: Montezuma Micro 40T Standard DATA
-  - Format: (40T, SS, DD, 200K, 512 Bytes, Skew 2)
-  - Variable: `dw mmd40`
+  - Variable: `mmd40`
 
-- `db 'MM-S80    $'`
+- **MM-S80**
   - Description: Montezuma Micro 80T DS SYSTEM
-  - Format: (80T, DS, DD, 710K, 256 Bytes, Skew 2)
-  - Variable: `dw mms80`
+  - Variable: `mms80`
 
-- `db 'Mattes    $'`
+- **Mattes**
   - Description: Eberhard Mattes Genie I CP/M 2.2
-  - Format: (80T, DS, DD, 780K, 512 Bytes)
-  - Variable: `dw mattes`
+  - Variable: `mattes`
 
-- `db 'MORROW    $'`
+- **MORROW**
   - Description: Morrow Micro Decision
-  - Format: (40T, SS, DD, 190K, 1024 Bytes, Skew 3)
-  - Variable: `dw morrow`
+  - Variable: `morrow`
 
-- `db 'MD3       $'`
+- **MD3**
   - Description: Morrow Micro Decision MD3
-  - Format: (40T, DS, DD, 390K, 1024 Bytes, Skew 3)
-  - Variable: `dw md3ds`
+  - Variable: `md3ds`
 
-- `db 'PROF#4    $'`
-  - Description: Prof80 (Format IV)
-  - Format: (80T, DS, DD, 770K, 512 Bytes, Skew 2)
-  - Variable: `dw prof4`
+- **PROF#4**
+  - Description: Prof80
+  - Variable: `prof4`
 
-- `db 'OSBORNE   $'`
+- **OSBORNE**
   - Description: Osborne 1
-  - Format: (40T, SS, SD, 90K, 256 Bytes, Skew 2)
-  - Variable: `dw osborne`
-
-- `db 'OSBEXEC   $'`
+  - Variable: `os
+- **OSBEXEC**
   - Description: Osborne 2 Executive
-  - Format: (40T, SS, DD, 185K, 1024 Bytes)
-  - Variable: `dw osbexec`
+  - Variable: `osbexec`
 
-- `db 'QX10      $'`
+- **QX10**
   - Description: Epson QX-10
-  - Format: (40T, DS, DD, 380K, 512 Bytes)
-  - Variable: `dw qx10`
+  - Variable: `qx10`
 
-- `db 'RAINBOW   $'`
+- **RAINBOW**
   - Description: DEC Rainbow 100+
-  - Format: (80T, SS, DD, 390K, 512 Bytes, Skew 2)
-  - Variable: `dw rainbow`
+  - Variable: `rainbow`
 
-- `db 'RAIR      $'`
-  - Description: N/A
-  - Format: N/A
-  - Variable: `dw rair`
+- **RAIR**
+  - Description: Rair
+  - Variable: `rair`
 
-- `db 'DECROBIN  $'`
+- **DECROBIN**
   - Description: DEC VT-180 "Robin"
-  - Format: (40T, SS, DD, 171K, 512 Bytes, Skew 2)
-  - Variable: `dw robin`
+  - Variable: `robin`
 
-- `db 'SCHMIDTKE $'`
+- **SCHMIDTKE**
   - Description: Schmidtke Genie I CP/M 2.2 System
-  - Format: (80T, DS, DD, 768K, 1024 Bytes)
-- `db 'TV802     $'`
+  - Variable: `schmid`
+
+- **SCHROEDER**
+  - Description: Gerald Schroeder Genie IIs CP/M 2.2 System
+  - Variable: `gsg2s`
+
+- **TV802**
   - Description: Televideo 802
-  - Format: (40T, DS, DD, 342K, 256 Bytes)
-  - Variable: `dw tv802`
+  - Variable: `tv802`
 
-- `db 'VORTEX    $'`
+- **VIS1050**
+  - Description: Visual 1050
+  - Variable: `vis1050`
+
+- **VORTEX**
   - Description: Amstrad CPC Vortex
-  - Format: (80T, DS, DD, 712K, 512 Bytes)
-  - Variable: `dw vortex`
+  - Variable: `vortex`
 
-- `db 'ZORBA     $'`
+- **ZORBA**
   - Description: Zorba
-  - Format: (40T, DS, DD, 390K, 512 Bytes)
-  - Variable: `dw zorba`
-
-- `db 00`
-  - Description: End of the list
+  - Variable: `zorba`
 
 ## Drop a Star ⭐
 
