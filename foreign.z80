@@ -247,6 +247,8 @@ startlist
 	dw	kontron
 	db	'EAGLE     $'	; Eagle I/II (80T, SS, DD, 390K, 1024 Bytes, Skew 2)
 	dw	eagle
+	db	'HOLTEG2S  $'	; Thomas Holte Genie IIs/Speedmaster CP/M 2.2a System (80T, SS, DD, 390K, 512 Bytes)
+	dw 	holte2s
 	db	'LNW-80    $'	; LNW Research LNW80 (40T, SS, DD, 166K, 256 Bytes, Skew 5)
 	dw	lnw80
 	db	'LOWE-A1   $'	; Lowe Electronics CP/M 2.2a (80T, SS, DD, 346K, 256 Bytes)
@@ -257,6 +259,8 @@ startlist
 	dw	loweb1
 	db	'LOWE-B2   $'	; Lowe Electronics CP/M 2.2b (80T, DS, DD, 696K, 256 Bytes, 4K Block)
 	dw	loweb2
+	db	'MS-DOS    $' 	; MS-DOS discs
+	dw	MSDOS
 	db	'MM-S40    $'	; Montezuma Micro 40T Standard SYSTEM (40T, SS, DD, 170K, 256 Bytes, Skew 2)
 	dw	mms40
 	db	'MM-D40    $'	; Montezuma Micro 40T Standard DATA (40T, SS, DD, 200K, 512 Bytes, Skew 2)
@@ -285,6 +289,8 @@ startlist
 	dw	robin
 	db	'SCHMIDTKE $'	; Schmidtke Genie I CP/M 2.2 System (80T, DS, DD, 768K, 1024 Bytes)
 	dw	schmid
+	db	'SCHROEDER $'	; Gerald Schroeder Genie IIs CP/M 2.2 System (80T, DS, DD, 768K, 1024 Bytes)
+	dw	gsg2s
 	db	'TV802     $'	; Televideo 802 (40T, DS, DD, 342K, 256 Bytes)
 	dw	tv802
 	db	'VIS1050   $'	; Visual 1050 (80T, SS, DD, 390K, 512 Bytes)
@@ -442,7 +448,6 @@ holteg3	dw	0050h		; SPT : 128 byte records / track
 	db	  20		; length of the skew table
 				; skew table
 	db	  0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19
-
 
 MSDOS	dw	0020h		; SPT : 128 byte records / track
 	db	  04h		; BSH : block shift
@@ -1120,6 +1125,54 @@ vis1050 dw      0028h           ; SPT : 128 byte records / track
         db        00111000B     ; Byte 1 of drive control table
         db        10000000B     ; Byte 2 of drive control table
         db        01            ; interleavingfactor
+        db        10            ; sector count / track
+        db        80            ; number of usable tracks
+
+        db        10            ; length of the skew table
+                                ; skew table
+        db        0,1,2,3,4,5,6,7,8,9
+; Gerald Schroeder Genie IIs CP/M 2.2 System (80T, DS, DD, 768K, 1024 Bytes)
+gsg2s   dw      0050h           ; SPT : 128 byte records / track
+        db        05h           ; BSH : block shift
+        db        1Fh           ; BSM : block mask
+        db        03h           ; EXM : extend mask
+        dw      00BFh           ; DSM : maximum block number
+        dw      00FFh           ; DRM : maximum directory entry number
+        db       0C0h           ; AL0 : allocation vector 0
+        db        00h           ; AL1 : allocation vector 1
+        dw      0040h           ; CKS : checksum size
+        dw        02h           ; OFF : offset for system tracks
+        db        03h           ; PSH : physical sector size shift
+        db        07h           ; PHM : physical sector size mask
+
+        db        01110000b     ; Byte 1 of drive control table
+        db        11000000b     ; Byte 2 of drive control table
+        db        02            ; interleavingfactor
+        db        10            ; sector count / track
+        db        80            ; number of usable tracks
+
+        db        10            ; length of the skew table
+                                ; skew table
+        db        0,1,2,3,4,5,6,7,8,9
+
+
+; Thomas Holte Genie IIs/Speedmaster CP/M 2.2a System (80T, SS, DD, 390K, 512 Bytes)
+holte2s dw      0028h           ; SPT : 128 byte records / track
+        db        04h           ; BSH : block shift
+        db        0Fh           ; BSM : block mask
+        db        00h           ; EXM : extend mask
+        dw      00C2h           ; DSM : maximum block number
+        dw      007Fh           ; DRM : maximum directory entry number
+        db       0C0h           ; AL0 : allocation vector 0
+        db        00h           ; AL1 : allocation vector 1
+        dw      0020h           ; CKS : checksum size
+        dw        02h           ; OFF : offset for system tracks
+        db        02h           ; PSH : physical sector size shift
+        db        03h           ; PHM : physical sector size mask
+
+        db        00110011b     ; Byte 1 of drive control table
+        db        10000000b     ; Byte 2 of drive control table
+        db        03            ; interleavingfactor
         db        10            ; sector count / track
         db        80            ; number of usable tracks
 
