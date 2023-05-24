@@ -44,7 +44,7 @@ Output of the possible disk formats was truncated in 'foreign' after one line. I
 
 Please refer to the source code for further details and implementation.
 
-### CP/M Formats Supported by 'foreign.com Ver 2.0'
+### Formats Supported by 'foreign.com Ver 2.0'
 
 - **MM-D80:** Montezuma CP/M format: MM-D80 - exchange format via TRSTOOLS (`dw mmd80`)
 - **ALPHA:** Alphatronic P3 (80T, DS, DD, 790K, 1024 Bytes) (`dw alpha`)
