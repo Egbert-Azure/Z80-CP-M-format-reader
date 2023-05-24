@@ -302,7 +302,6 @@ startlist
 	db	00
 endlist
 
-
 ; Klaus Kaempf CP/M 2.2x/3.0 System (80T, DS, DD, 768K, 1024 Bytes)
 s80dsdd	dw	0050h		; SPT : 128 byte records / track
 	db	  05h		; BSH : block shift
