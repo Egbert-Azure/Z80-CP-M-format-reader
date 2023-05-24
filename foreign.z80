@@ -295,6 +295,8 @@ startlist
 	dw	rainbow
 	db	'RAIR      $'
 	dw	rair
+	db	'RSCPM3    $'	; Radio Shack TRS-80 Model 4/4P CP/M Plus (40T, SS, DD, 156K, 512 Bytes)
+	dw	rscpm3
 	db	'DECROBIN  $'	; DEC VT-180 "Robin" (40T, SS, DD, 171K, 512 Bytes, Skew 2)
 	dw	robin
 	db	'SCHMIDTKE $'	; Schmidtke Genie I CP/M 2.2 System (80T, DS, DD, 768K, 1024 Bytes)
@@ -1211,4 +1213,28 @@ lnw512  dw      0028h           ; SPT : 128 byte records / track
         db        10            ; length of the skew table
                                 ; skew table
         db       0,1,2,3,4,5,6,7,8,9
+
+; Radio Shack TRS-80 Model 4/4P CP/M Plus (40T, SS, DD, 156K, 512 Bytes)
+rscpm3  dw      0020h           ; SPT : 128 byte records / track
+        db        03h           ; BSH : block shift
+        db        07h           ; BSM : block mask
+        db        00h           ; EXM : extend mask
+        dw      009Bh           ; DSM : maximum block number
+        dw      003Fh           ; DRM : maximum directory entry number
+        db       0C0h           ; AL0 : allocation vector 0
+        db        00h           ; AL1 : allocation vector 1
+        dw      0010h           ; CKS : checksum size
+        dw        01h           ; OFF : offset for system tracks
+        db        02h           ; PSH : physical sector size shift
+        db        03h           ; PHM : physical sector size mask
+
+        db        00111000b     ; Byte 1 of drive control table
+        db        10000000b     ; Byte 2 of drive control table
+        db        01            ; interleavingfactor
+        db         8            ; sector count / track
+        db        40            ; number of usable tracks
+
+        db         8            ; length of the skew table
+                                ; skew table
+        db       0,1,2,3,4,5,6,7
 end	start
