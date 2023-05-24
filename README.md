@@ -44,168 +44,45 @@ Output of the possible disk formats was truncated in 'foreign' after one line. I
 
 Please refer to the source code for further details and implementation.
 
-## Supported formats
+### Formats Supported by 'foreign.com Ver 2.0'
 
-## Startlist
-(lower letters in `db 'name $'` signals: not working properly)
-- `db 'MM-D80    $'`  
-  - Description: Default - MONTEZUMA CP/M format: MM-D80 - exchange format via TRSTOOLS
-  - Format: Montezuma Micro 80T DS DATA (80T, DS, DD, 800K, 512 Bytes, Skew 2)
-  - Variable: `dw mmd80`
-
-- `db 'ALPHA     $'`
-  - Description: Alphatronic P3
-  - Format: (80T, DS, DD, 790K, 1024 Bytes)
-  - Variable: `dw alpha`
-
-- `db 'ASTER-3S  $'`
-  - Description: Aster CT-80 System
-  - Format: (80T, DS, DD, 780K, 1024 Bytes)
-  - Variable: `dw aster3s`
-
-- `db 'HOLTE-G3  $'`  
-  - Description: Thomas Holte CP/M 2.2c/3.0a
-  - Format: (80T, DS, DD, 768K, 512 Bytes)
-  - Variable: `dw holteg3`
-
-- `db 'MS-DOS    $'`  
-  - Description: MS-DOS
-  - Format: N/A
-  - Variable: `dw MSDOS`
-
-- `db 'S80-DD    $'`  
-  - Description: Klaus Kaempf CP/M 2.2x/3.0 System
-  - Format: (80T, DS, DD, 768K, 1024 Bytes)
-  - Variable: `dw s80dsdd`
-
-- `db 'D80-DD    $'`  
-  - Description: Klaus Kaempf CP/M 2.2x/3.0 Data
-  - Format: (80T, DS, DD, 800K, 1024 Bytes)
-  - Variable: `dw d80dsdd`
-
-- `db 'KAYPRO-2  $'`  
-  - Description: Kaypro II
-  - Format: (40T, SS, DD, 196K, 512 Bytes)
-  - Variable: `dw kaypro2`
-
-- `db 'KAYPRO-4  $'`  
-  - Description: Kaypro 4 & 10
-  - Format: (40T, DS, DD, 392K, 512 Bytes)
-  - Variable: `dw kaypro4`
-
-- `db 'Kontron   $'`
-  - Description: KONTRON PSI 908/9C/98
-  - Format: (77T, DS, DD, 256 Bytes, Skew 3)
-  - Variable: `dw kontron`
-
-- `db 'LNW-80    $'`  
-  - Description: LNW Research LNW80
-  - Format: (40T, SS, DD, 166K, 256 Bytes, Skew 5)
-  - Variable: `dw lnw80`
-
-- `db 'LOWE-A1   $'`  
-  - Description: Lowe Electronics CP/M 2.2a
-  - Format: (80T, SS, DD, 346K, 256 Bytes)
-  - Variable: `dw lowea1`
-
-- `db 'LOWE-A2   $'`  
-  - Description: Lowe Electronics CP/M 2.2a
-  - Format: (80T, DS, DD, 696K, 256 Bytes)
-  - Variable: `dw lowea2`
-
-- `db 'LOWE-B1   $'`  
-  - Description: Lowe Electronics CP/M 2.2b
-  - Format: (80T, SS)
-- `db 'LOWE-B2   $'`
-  - Description: Lowe Electronics CP/M 2.2b
-  - Format: (80T, DS, DD, 696K, 256 Bytes, 4K Block)
-  - Variable: `dw loweb2`
-
-- `db 'MM-S40    $'`
-  - Description: Montezuma Micro 40T Standard SYSTEM
-  - Format: (40T, SS, DD, 170K, 256 Bytes, Skew 2)
-  - Variable: `dw mms40`
-
-- `db 'MM-D40    $'`
-  - Description: Montezuma Micro 40T Standard DATA
-  - Format: (40T, SS, DD, 200K, 512 Bytes, Skew 2)
-  - Variable: `dw mmd40`
-
-- `db 'MM-S80    $'`
-  - Description: Montezuma Micro 80T DS SYSTEM
-  - Format: (80T, DS, DD, 710K, 256 Bytes, Skew 2)
-  - Variable: `dw mms80`
-
-- `db 'Mattes    $'`
-  - Description: Eberhard Mattes Genie I CP/M 2.2
-  - Format: (80T, DS, DD, 780K, 512 Bytes)
-  - Variable: `dw mattes`
-
-- `db 'MORROW    $'`
-  - Description: Morrow Micro Decision
-  - Format: (40T, SS, DD, 190K, 1024 Bytes, Skew 3)
-  - Variable: `dw morrow`
-
-- `db 'MD3       $'`
-  - Description: Morrow Micro Decision MD3
-  - Format: (40T, DS, DD, 390K, 1024 Bytes, Skew 3)
-  - Variable: `dw md3ds`
-
-- `db 'PROF#4    $'`
-  - Description: Prof80 (Format IV)
-  - Format: (80T, DS, DD, 770K, 512 Bytes, Skew 2)
-  - Variable: `dw prof4`
-
-- `db 'OSBORNE   $'`
-  - Description: Osborne 1
-  - Format: (40T, SS, SD, 90K, 256 Bytes, Skew 2)
-  - Variable: `dw osborne`
-
-- `db 'OSBEXEC   $'`
-  - Description: Osborne 2 Executive
-  - Format: (40T, SS, DD, 185K, 1024 Bytes)
-  - Variable: `dw osbexec`
-
-- `db 'QX10      $'`
-  - Description: Epson QX-10
-  - Format: (40T, DS, DD, 380K, 512 Bytes)
-  - Variable: `dw qx10`
-
-- `db 'RAINBOW   $'`
-  - Description: DEC Rainbow 100+
-  - Format: (80T, SS, DD, 390K, 512 Bytes, Skew 2)
-  - Variable: `dw rainbow`
-
-- `db 'RAIR      $'`
-  - Description: N/A
-  - Format: N/A
-  - Variable: `dw rair`
-
-- `db 'DECROBIN  $'`
-  - Description: DEC VT-180 "Robin"
-  - Format: (40T, SS, DD, 171K, 512 Bytes, Skew 2)
-  - Variable: `dw robin`
-
-- `db 'SCHMIDTKE $'`
-  - Description: Schmidtke Genie I CP/M 2.2 System
-  - Format: (80T, DS, DD, 768K, 1024 Bytes)
-- `db 'TV802     $'`
-  - Description: Televideo 802
-  - Format: (40T, DS, DD, 342K, 256 Bytes)
-  - Variable: `dw tv802`
-
-- `db 'VORTEX    $'`
-  - Description: Amstrad CPC Vortex
-  - Format: (80T, DS, DD, 712K, 512 Bytes)
-  - Variable: `dw vortex`
-
-- `db 'ZORBA     $'`
-  - Description: Zorba
-  - Format: (40T, DS, DD, 390K, 512 Bytes)
-  - Variable: `dw zorba`
-
-- `db 00`
-  - Description: End of the list
+- **MM-D80:** Montezuma CP/M format: MM-D80 - exchange format via TRSTOOLS (`dw mmd80`)
+- **ALPHA:** Alphatronic P3 (80T, DS, DD, 790K, 1024 Bytes) (`dw alpha`)
+- **ASTER-3S:** Aster CT-80 System (80T, DS, DD, 780K, 1024 Bytes) (`dw aster3s`)
+- **HOLTE-G3:** Thomas Holte CP/M 2.2c/3.0a (80T, DS, DD, 768K, 512 Bytes) (`dw holteg3`)
+- **MS-DOS:** MS-DOS discs (`dw MSDOS`)
+- **S80-DD:** Klaus Kaempf CP/M 2.2x/3.0 System (80T, DS, DD, 768K, 1024 Bytes) (`dw s80dsdd`)
+- **D80-DD:** Klaus Kaempf CP/M 2.2x/3.0 Data (80T, DS, DD, 800K, 1024 Bytes) (`dw d80dsdd`)
+- **KAYPRO-2:** Kaypro II (40T, SS, DD, 196K, 512 Bytes) (`dw kaypro2`)
+- **Kaypro-4:** Kaypro 4 & 10 (40T, DS, DD, 392K, 512 Bytes) (`dw kaypro4`)
+- **Kontron:** KONTRON PSI 908/9C/98 (77T, DS, DD, 256 Bytes, Skew 3) (`dw kontron`)
+- **EAGLE:** Eagle I/II (80T, SS, DD, 390K, 1024 Bytes, Skew 2) (`dw eagle`)
+- **HOLTEG2S:** Thomas Holte Genie IIs/Speedmaster CP/M 2.2a System (80T, SS, DD, 390K, 512 Bytes) (`dw holte2s`)
+- **LNW-80:** LNW Research LNW80 (40T, SS, DD, 166K, 256 Bytes, Skew 5) (`dw lnw80`)
+- **LOWE-A1:** Lowe Electronics CP/M 2.2a (80T, SS, DD, 346K, 256 Bytes) (`dw lowea1`)
+- **LOWE-A2:** Lowe Electronics CP/M 2.2a (80T, DS, DD, 696K, 256 Bytes) (`dw lowea2`)
+- **LOWE-B1:** Lowe Electronics CP/M 2.2b (80T, SS, DD, 384K, 256 Bytes, 4K Block) (`dw loweb1`)
+- **LOWE-B2:** Lowe Electronics CP/M 2.2b (80T, DS, DD, 696K, 256 Bytes, 4K Block) (`dw loweb2`)
+- **MS-DOS:** MS-DOS discs (`dw MSDOS`)
+- **MM-S40:** Montezuma Micro 40T Standard SYSTEM (40T, SS, DD, 170K, 256 Bytes, Skew 2) (`dw mms40`)
+- **MM-D40:** Montezuma Micro 40T Standard DATA (40T, SS, DD, 200K, 512 Bytes, Skew 2) (`dw mmd40`)
+- **MM-S80:** Montezuma Micro 80T DS SYSTEM (80T, DS, DD, 710K, 256 Bytes, Skew 2) (`dw mms80`)
+- **Mattes:** Eberhard Mattes Genie I CP/M 2.2 (80T, DS, DD, 780K, 512 Bytes) (`dw mattes`)
+- **MORROW:** Morrow Micro Decision (40T, SS, DD, 190K, 1024 Bytes, Skew 3) (`dw morrow`)
+- **MD3:** Morrow Micro Decision MD3 (40T, DS, DD, 390K, 1024 Bytes, Skew 3) (`dw md3ds`)
+- **PROF#4:** Prof80 (Format IV: 80T, DS, DD, 770K, 512 Bytes, Skew 2) (`dw prof4`)
+- **OSBORNE:** Osborne 1 (40T, SS, SD, 90K, 256 Bytes, Skew 2) (`dw osborne`)
+- **OSBEXEC:** Osborne 2 Executive (40T, SS, DD, 185K, 1024 Bytes) (`dw osbexec`)
+- **QX10:** Epson QX-10 (40T, DS, DD, 380K, 512 Bytes) (`dw qx10`)
+- **RAINBOW:** DEC Rainbow 100+ (80T, SS, DD, 390K, 512 Bytes, Skew 2) (`dw rainbow`)
+- **RAIR:** Rair (`dw rair`)
+- **DECROBIN:** DEC VT-180 "Robin" (40T, SS, DD, 171K, 512 Bytes, Skew 2) (`dw robin`)
+- **SCHMIDTKE:** Schmidtke Genie I CP/M 2.2 System (80T, DS, DD, 768K, 1024 Bytes) (`dw schmid`)
+- **SCHROEDER:** Gerald Schroeder Genie IIs CP/M 2.2 System (80T, DS, DD, 768K, 1024 Bytes) (`dw gsg2s`)
+- **TV802:** Televideo 802 (40T, DS, DD, 342K, 256 Bytes) (`dw tv802`)
+- **VIS1050:** Visual 1050 (80T, SS, DD, 390K, 512 Bytes) (`dw vis1050`)
+- **VORTEX:** Amstrad CPC Vortex (80T, DS, DD, 712K, 512 Bytes) (`dw vortex`)
+- **ZORBA:** Zorba (40T, DS, DD, 390K, 512 Bytes) (`dw zorba`)
 
 ## Drop a Star ⭐
 
