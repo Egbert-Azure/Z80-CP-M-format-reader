@@ -27,17 +27,25 @@
 ;* 		updated MM-D80 skew table fixed the bug				*
 ;*					05/14/2023				*
 ;*		additional formats added by Jens Guenther			*
+;*	some code improvements by Egbert Schroeer 05/24/2023			*
+;* 	Github Copilot helped to write some code improvement, 		*
+;*	thanks to all contributors						*	
+;*										*
 ;********************************************************************************
-; Define constants for special characters and BDOS functions
+		.Z80 	; assembler directive for z80 assembler
+			; .Z180 ; assembler directive for Z180 assembler
+; Define BDOS function numbers
+BDOS      	EQU 	0005h	; address of BDOS call
+TPA		equ	0100h	; address of TPA
+WRITESTR	equ	09h	; BDOS function to print a string
+READCHR		equ	08h	; BDOS function to read a character
+TERMCPM		equ	00h	; BDOS function to terminate CP/M
+DIRBIOS		equ	50  	; BDOS function for a direct BIOS call
+
+; Define constants for special characters
 cr    equ 0dh   ; carriage return character
 lf    equ 0ah   ; line feed character
 esc   equ 1bh   ; escape character
-bdos  equ 0005h ; address of BDOS call
-
-; Define BDOS function numbers
-wboot   equ 00h ; BDOS function warmstart
-prtstr  equ 09h ; BDOS function to print a string
-dirbios equ 50  ; BDOS function for a direct BIOS call
 
 ; Define addresses for BIOS functions
 xmove  equ 0f857h ; BIOS function for interbank memory move
@@ -46,7 +54,7 @@ move   equ 0f84bh ; BIOS function for moving memory
 ; Define the address where the entered name is stored
 xtail  equ 0082h
 
-	org 100h
+	org	TPA 	 ; start of program in TPA
 
 start	ld hl, xtail     ; the entered name must be saved
 	ld de, nambuff   ; in a buffer to prevent overwriting
@@ -54,8 +62,8 @@ start	ld hl, xtail     ; the entered name must be saved
 	ldir
 
 	ld de, hallo     ; DE points to the greeting message
-	ld c, prtstr     ; BDOS call #9 to print a string
-	call bdos        ; until the end character '$'
+	ld c, WRITESTR     ; BDOS call #9 to print a string
+	call BDOS        ; until the end character '$'
 
 	ld hl, startlist ; HL points to the start of the name list
 	ld (buff), hl    ; save it in a buffer for later use
@@ -88,13 +96,13 @@ dernicht
 
 falsename              ; Subroutine for incorrect foreign format name
     ld de,err1         ; Error message string
-    ld c, prtstr       ; BDOS-Call #9, output string
-    call bdos
+    ld c, WRITESTR       ; BDOS-Call #9, output string
+    call BDOS
     ld de,startlist   ; First element in the list of valid names,
 loop
     ld (buff),de       ; stored to be incremented later.
-    ld c, prtstr       ; All names are outputted until the end marker '00'.
-    call bdos
+    ld c, WRITESTR       ; All names are outputted until the end marker '00'.
+    call BDOS
     ld hl,(buff)
     ld bc,13          ; The names are 13 bytes apart.
     add hl,bc         ; HL now points to the next name or '00'.
@@ -103,18 +111,18 @@ loop
     cp 00
     jr nz,loop        ; Loop until the last name is outputted.
     ld de,wrapoff     ; Turn off automatic word wrap
-    ld c,prtstr
-    call bdos
-    ld c,wboot        ; Then warm start and return to operating system.
-    call bdos
+    ld c,WRITESTR
+    call BDOS
+    ld c,TERMCPM        ; Then warm start and return to operating system.
+    call BDOS
 
 ; EINSTELL: The respective parameter block is transferred to RAM.
 
 einstell
-    ld c,dirbios      ; First, the address of the DRIVETABLE is retrieved
+    ld c,DIRBIOS      ; First, the address of the DRIVETABLE is retrieved
                       ; via a BDOS-Call, where the addresses of all DPHs are stored.
     ld de,biospb      ; A parameter block is passed to the BDOS-Call.
-    call bdos         ; HL+30 then points to the XDPH of drive P.
+    call BDOS         ; HL+30 then points to the XDPH of drive P.
     ld bc,30
     add hl,bc         ; The content of HL is copied to DE, which contains
     ld e,(hl)         ; the address of the XDPH. It is stored in buff2 temporarily.
@@ -167,7 +175,7 @@ einstell
 	pop de
 	ld a, (de)          ; Length of the skew table
 	inc de              ; Now points to the beginning of the skew table
-	ld hl, (buf4)      ; Address of the table
+	ld hl,(buf4)       ; Address of the table
 	ld b, 0             ; The address of the table is the first word of the XDPH
 	ld c, a             ; The length was stored in the accumulator
 	call move           ; Move data from DE to HL
@@ -179,10 +187,10 @@ einstell
 	ld bc, 10
 	ldir
 	ld de, gutis        ; Points to the message
-	ld c, prtstr        ; BDOS-Call String output
-	call bdos           ; Execute
-	ld c, wboot         ; Warmstart back to the operating system
-	call bdos
+	ld c, WRITESTR        ; BDOS-Call String output
+	call BDOS           ; Execute
+	ld c, TERMCPM         ; Warmstart back to the operating system
+	call BDOS
 
 ; List of character strings to output
 hallo	db	13,10,27,'R','FOREIGN.COM - Version 2.0',27,'S'
@@ -249,8 +257,10 @@ startlist
 	dw	eagle
 	db	'HOLTEG2S  $'	; Thomas Holte Genie IIs/Speedmaster CP/M 2.2a System (80T, SS, DD, 390K, 512 Bytes)
 	dw 	holte2s
-	db	'LNW-80    $'	; LNW Research LNW80 (40T, SS, DD, 166K, 256 Bytes, Skew 5)
-	dw	lnw80
+	db	'LNW-256   $'	; LNW Research lnw256 (40T, SS, DD, 166K, 256 Bytes, Skew 5)
+	dw	lnw256
+	db	'LNW-512   $'	; LNW Research lnw256 (40T, SS, DD, 332K, 512 Bytes, Skew 5)
+	dw	lnw512
 	db	'LOWE-A1   $'	; Lowe Electronics CP/M 2.2a (80T, SS, DD, 346K, 256 Bytes)
 	dw	lowea1
 	db	'LOWE-A2   $'	; Lowe Electronics CP/M 2.2a (80T, DS, DD, 696K, 256 Bytes)
@@ -547,8 +557,8 @@ kontron	dw	0040h		; SPT : 128 byte records / track
 	db	22,25,28,31,17,20,23,26,29,18,21,24,27,30
 
 
-; LNW Research LNW80 (40T, SS, DD, 166K, 256 Bytes, Skew 5)
-lnw80	dw	0024h		; SPT : 128 byte records / track
+; LNW Research lnw256 (40T, SS, DD, 166K, 256 Bytes, Skew 5)
+lnw256	dw	0024h		; SPT : 128 byte records / track
 	db	  04h		; BSH : block shift
 	db	  0Fh		; BSM : block mask
 	db	  01h		; EXM : extend mask
@@ -1178,4 +1188,27 @@ holte2s dw      0028h           ; SPT : 128 byte records / track
         db        10            ; length of the skew table
                                 ; skew table
         db        0,1,2,3,4,5,6,7,8,9
+
+lnw512  dw      0028h           ; SPT : 128 byte records / track
+        db        03h           ; BSH : block shift
+        db        07h           ; BSM : block mask
+        db        00h           ; EXM : extend mask
+        dw      00B3h           ; DSM : maximum block number
+        dw      001Fh           ; DRM : maximum directory entry number
+        db       080h           ; AL0 : allocation vector 0
+        db        00h           ; AL1 : allocation vector 1
+        dw      0008h           ; CKS : checksum size
+        dw        04h           ; OFF : offset for system tracks
+        db        02h           ; PSH : physical sector size shift
+        db        03h           ; PHM : physical sector size mask
+
+        db        00110000b     ; Byte 1 of drive control table
+        db        10000000b     ; Byte 2 of drive control table
+        db        01            ; interleavingfactor
+        db        10            ; sector count / track
+        db        40            ; number of usable tracks
+
+        db        10            ; length of the skew table
+                                ; skew table
+        db       0,1,2,3,4,5,6,7,8,9
 end	start
