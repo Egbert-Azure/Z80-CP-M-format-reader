@@ -28,7 +28,7 @@
 ;*					05/14/2023				*
 ;*		additional formats added by Jens Guenther			*
 ;*	some code improvements by Egbert Schroeer 05/24/2023			*
-;* 	Testing Github Copilot to write some code improvement, 		*
+;* 	Testing Github Copilot to write some code improvement, 			*
 ;*	thanks to all contributors						*	
 ;*										*
 ;********************************************************************************
@@ -285,6 +285,8 @@ startlist
 	dw	md3ds
 	db	'PROF#4    $'	; Prof80 (Format IV: 80T, DS, DD, 770K, 512 Bytes, Skew 2)
 	dw	prof4
+	db	'OMIKRON   $'	; Omikron Basic (80T, DS, DD, 770K, 512 Bytes, Skew 2)
+	dw	omikron
 	db	'OSBORNE   $'	; Osborne 1 (40T, SS, SD, 90K, 256 Bytes, Skew 2)
 	dw	osborne
 	db	'OSBEXEC   $'	; Osborne 2 Executive (40T, SS, DD, 185K, 1024 Bytes)
@@ -1237,4 +1239,28 @@ rscpm3  dw      0020h           ; SPT : 128 byte records / track
         db         8            ; length of the skew table
                                 ; skew table
         db       0,1,2,3,4,5,6,7
+
+; Omikron Mapper I TRS-80 Model I/III (35T, SS, SD, 83K, 128 Bytes, Skew 4)
+omikron dw      0012h           ; SPT : 128 byte records / track
+        db        03h           ; BSH : block shift
+        db        07h           ; BSM : block mask
+        db        00h           ; EXM : extend mask
+        dw      0052h           ; DSM : maximum block number
+        dw      003Fh           ; DRM : maximum directory entry number
+        db       0C0h           ; AL0 : allocation vector 0
+        db        00h           ; AL1 : allocation vector 1
+        dw      0010h           ; CKS : checksum size
+        dw        03h           ; OFF : offset for system tracks
+        db        00h           ; PSH : physical sector size shift
+        db        00h           ; PHM : physical sector size mask
+
+        db        00001000b     ; Byte 1 of drive control table
+        db        00000000b     ; Byte 2 of drive control table
+        db        01            ; interleavingfactor
+        db        18            ; sector count / track
+        db        35            ; number of usable tracks
+
+        db        18            ; length of the skew table
+                                ; skew table
+        db       0,4,8,12,16,2,6,10,14,1,5,9,13,17,3,7,11,15
 end	start
