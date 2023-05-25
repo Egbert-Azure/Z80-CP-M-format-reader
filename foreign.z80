@@ -269,6 +269,8 @@ startlist
 	dw	loweb1
 	db	'LOWE-B2   $'	; Lowe Electronics CP/M 2.2b (80T, DS, DD, 696K, 256 Bytes, 4K Block)
 	dw	loweb2
+	db	'MBC-1200  $'	; Sanyo MBC-1200/1250 (80T, DS, DD, 624K, 256 Bytes, Skew 3)
+	dw	mbc1200
 	db	'MS-DOS    $' 	; MS-DOS discs
 	dw	MSDOS
 	db	'MM-S40    $'	; Montezuma Micro 40T Standard SYSTEM (40T, SS, DD, 170K, 256 Bytes, Skew 2)
@@ -1263,4 +1265,28 @@ omikron dw      0012h           ; SPT : 128 byte records / track
         db        18            ; length of the skew table
                                 ; skew table
         db       0,4,8,12,16,2,6,10,14,1,5,9,13,17,3,7,11,15
+; Sanyo MBC-1200/1250 (80T, DS, DD, 624K, 256 Bytes, Skew 3)
+mbc1200 dw      0040h           ; SPT : 128 byte records / track
+        db        05h           ; BSH : block shift
+        db        1Fh           ; BSM : block mask
+        db        03h           ; EXM : extend mask
+        dw      009Bh           ; DSM : maximum block number
+        dw      007Fh           ; DRM : maximum directory entry number
+        db       080h           ; AL0 : allocation vector 0
+        db        00h           ; AL1 : allocation vector 1
+        dw      0020h           ; CKS : checksum size
+        dw        02h           ; OFF : offset for system tracks
+        db        01h           ; PSH : physical sector size shift
+        db        01h           ; PHM : physical sector size mask
+
+        db        01111000b     ; Byte 1 of drive control table
+        db        01000000b     ; Byte 2 of drive control table
+        db        01            ; interleavingfactor
+        db        32            ; sector count / track
+        db        80            ; number of usable tracks
+
+        db        32            ; length of the skew table
+                                ; skew table
+        db       0,3,6,9,12,15,2,5,8,11,14,1,4,7,10,13,16,19
+        db      22,25,28,31,18,21,24,27,30,17,20,23,26,29
 end	start
