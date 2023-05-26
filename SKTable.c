@@ -11,7 +11,7 @@ int main(void) {
         int sector_index = i / 32;
         int track_index = sector_index % 3;
         int skew_sector_index = (track_index * 32) + sector_offset;
-        skew_table[skew_sector_index] = sector_index;
+        skew_table[i] = skew_sector_index;
     }
 
     for (i = 0; i < SKEW_TABLE_LENGTH; i++) {
@@ -20,6 +20,7 @@ int main(void) {
 
     return 0;
 }
+
 
 
 
