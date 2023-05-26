@@ -163,7 +163,7 @@ einstell
 	add hl, bc
 	ld bc, 5            ; 5 bytes
 	call move           ; Move data from DE to HL
-
+	
 ; Copy the skew table
 
 	pop hl              ; The length of the skew table to be copied is determined, which comes directly after the DCT
