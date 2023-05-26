@@ -17,7 +17,7 @@
     // enable seekSymbolsThroughWorkspace on non-modular projects without imports
     "z80-macroasm.seekSymbolsThroughWorkspace": false,
     "z80-macroasm.format.enabled": true,
-    "z80-macroasm.format.baseIndent": 2,
+    "z80-macroasm.format.baseIndent": 1,
     "z80-macroasm.format.controlIndent": 1,
     "z80-macroasm.format.whitespaceAfterInstruction": "auto",
     "z80-macroasm.format.spaceAfterArgument": false,
