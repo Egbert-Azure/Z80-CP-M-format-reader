@@ -1318,7 +1318,7 @@ mbc1200 dw      0040h           ; SPT : 128 byte records / track
 	db	22,25,28,31,18,21,24,27,30,17,20,23,26,29
 
 ; via Github Pilot Chat to test the function
-; not tested yet on real hardware or emulator
+; not all tested yet on real hardware or emulator
 
 newdos80 dw 0040h       ; SPT : 64 byte records / track
 	db  03h         ; BSH : block shift
