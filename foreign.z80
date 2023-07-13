@@ -75,28 +75,26 @@ xtail  equ 0082h
 
 	org	TPA 	 ; start of program in TPA
 
-start	ld hl, xtail     ; the entered name must be saved
-	ld de, nambuff   ; in a buffer to prevent overwriting
-	ld bc, 10
-	ldir
-
-	ld de, hallo     ; DE points to the greeting message
-	ld c, WRITESTR     ; BDOS call #9 to print a string
+start	ld de, hallo     ; DE points to the greeting message
+	ld c, WRITESTR   ; BDOS call #9 to print a string
 	call BDOS        ; until the end character '$'
+	ld a, (xtail - 2); 0080h = length of command tail
+	or a             ; Disk format specified?
+	jr z, first      ; No, use first entry of format list
+	ld hl, xtail     ; Point to format name in command tail
+	ld de, nambuff   ; the entered name must be saved
+	ld bc, 10        ; in a buffer to prevent overwriting
+	ldir
+first	ld hl, startlist ; HL points to the start of the name list
 
-	ld hl, startlist ; HL points to the start of the name list
-	ld (buff), hl    ; save it in a buffer for later use
-
-
-loopy	ld de, nambuff   ; DE points to the entered name
+loopy	ld (buff), hl    ; save it in a buffer for later use
+	ld de, nambuff   ; DE points to the entered name
 
 loopx	ld a, (de)       ; has the end of the name been reached?
-	cp 00h
+	or a
 	jr z, einstell   ; if yes, then a valid name has been entered
-
 	cp (hl)          ; otherwise, compare with the list entry
 	jr nz, dernicht  ; if incorrect character, move to next entry
-
 	inc hl           ; if correct, move DE and HL one byte further
 	inc de
 	jr loopx         ; and continue
@@ -106,35 +104,33 @@ dernicht
 	ld bc, 13        ; move to the end of the current entry
 	add hl, bc
 	ld a, (hl)       ; check if the end of the list has been reached
-	cp 00h
-	jr	z,falsename  ; if no listed name has been recognized, ERROR
-	ld (buff), hl    ; save HL in buffer
-	jr loopy         ; repeat the loop
+	or a
+	jr nz, loopy     ; or repeat the loop
 
-; FALSENAME
-; If an incorrect foreign format name is entered, the list of all valid names is outputted.
+; If an incorrect foreign format name is entered, the list of all valid names is shown.
 
 falsename              ; Subroutine for incorrect foreign format name
-    ld de,err1         ; Error message string
-    ld c, WRITESTR       ; BDOS-Call #9, output string
+    ld de, error       ; Error message string
+    ld c, WRITESTR     ; BDOS-Call #9, output string
     call BDOS
-    ld de,startlist   ; First element in the list of valid names,
+    ld hl,startlist   ; First element in the list of valid names,
+
 loop
-    ld (buff),de       ; stored to be incremented later.
-    ld c, WRITESTR       ; All names are outputted until the end marker '00'.
-    call BDOS
-    ld hl,(buff)
-    ld bc,13          ; The names are 13 bytes apart.
-    add hl,bc         ; HL now points to the next name or '00'.
-    ex de,hl          ; DE is loaded with HL
-    ld a,(de)         ; for BDOS-Call #9.
-    cp 00
-    jr nz,loop        ; Loop until the last name is outputted.
-    ld de,wrapoff     ; Turn off automatic word wrap
-    ld c,WRITESTR
-    call BDOS
-    ld c,TERMCPM        ; Then warm start and return to operating system.
-    call BDOS
+    	push hl           ; Save HL
+    	ex de, hl         ; DE <--> HL
+    	ld c, WRITESTR    ; BDOS-Call #9, output string
+    	call BDOS
+	pop hl             ; Restore HL
+    	ld bc, 13          ; The names are 13 bytes apart.
+    	add hl, bc         ; HL now points to the next name or '00'.
+    	ld a, (hl)         ; All names are outputted until the end marker '00'.
+    	or a               ; check if the end of the list has been reached
+    	jr nz, loop        ; Loop until the last name is outputted.
+    	ld de, wrapoff     ; Turn off automatic word wrap
+	ld	c,WRITESTR
+	call BDOS
+    	ld c,TERMCPM      ; Then warm start and return to operating system.
+    	call BDOS
 
 ; EINSTELL: The respective parameter block is transferred to RAM.
 
@@ -203,7 +199,7 @@ einstell
 ; Report the success of the action
 
 	ld hl, (buff)       ; Points to the name of the chosen format
-	ld de, eintrag      ; It is copied into the output string
+	ld de, nambuff      ; It is copied into the output string
 	ld bc, 10
 	ldir
 	ld de, gutis        ; Points to the message
@@ -215,20 +211,21 @@ einstell
 ; List of character strings to output
 hallo	db	cr, lf, esc,'R','FOREIGN.COM - Version 2.0',esc,'S'
 	db	cr, lf,'sets drive P to alien disk formats on Genie IIIs with Holte CP/M +',cr, lf,'$'
-err1 	db 	cr, lf,'Incorrect format name specified!',cr, lf
+error 	db 	cr, lf,'Incorrect format name specified!',cr, lf
 	db	'The following format names are allowed:',cr,lf,cr,lf,esc,'X','$'
 wrapoff db esc,'Y','$'
 gutis 	db cr, lf,'New format now valid for drive P: '
-eintrag ds 10
+nambuff	ds	10 	; the selected name  is saved here to prevent overwriting by CP/M
 	db cr, lf,'$'
 
 ; Intermediate buffer for register pair DE or HL
 buff        dw      0000h
 buff2       dw      0000h      ; contains the address of the XDPH of LW P
-nambuff	ds	10         ; the selected name  is saved here to prevent overwriting by CP/M
 
 biospb                         ; The BIOS PARAMETER BLOCK must be specified
 fnum        db      22         ; when a direct BIOS call is made through BDOS-Call 50
+
+;
 ainh        db      00
 bcinh       dw      0000h      ; parameters to be passed are stored here
 deinh       dw      0000h
