@@ -215,7 +215,7 @@ einstell
 ; List of character strings to output
 hallo	db	cr, lf, esc,'R','FOREIGN.COM - Version 2.0',esc,'S'
 	db	cr, lf,'sets drive P to alien disk formats on Genie IIIs with Holte CP/M +',cr, lf,'$'
-err1 	db 	cr, lf,'Incorrect format name specified!',cr, lf,
+err1 	db 	cr, lf,'Incorrect format name specified!',cr, lf
 	db	'The following format names are allowed:',cr,lf,cr,lf,esc,'X','$'
 wrapoff db esc,'Y','$'
 gutis 	db cr, lf,'New format now valid for drive P: '
@@ -225,7 +225,7 @@ eintrag ds 10
 ; Intermediate buffer for register pair DE or HL
 buff        dw      0000h
 buff2       dw      0000h      ; contains the address of the XDPH of LW P
-nambuff     ds      10         ; the selected name is saved here to prevent overwriting by CP/M
+nambuff	ds	10         ; the selected name  is saved here to prevent overwriting by CP/M
 
 biospb                         ; The BIOS PARAMETER BLOCK must be specified
 fnum        db      22         ; when a direct BIOS call is made through BDOS-Call 50
