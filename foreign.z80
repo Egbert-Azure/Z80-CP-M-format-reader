@@ -1340,29 +1340,29 @@ newdos80 dw 0040h       ; SPT : 64 byte records / track
 			; skew table
 	db  0,3,6,9,12,15,18,21,24,27,30,33,36,39,42,45,48,51
 
-
+; unclear if CP/M-86 format works with Holte CP/M
 cpm86 dw 0080h       ; SPT : 128 byte records / track
-      db  04h         ; BSH : block shift
+      db  03h         ; BSH : block shift
       db  0fh         ; BSM : block mask
       db  00h         ; EXM : extend mask
-      dw  0ffbh       ; DSM : maximum block number
+      dw  03ffh       ; DSM : maximum block number
       dw  007fh       ; DRM : maximum directory entry number
       db  0c0h        ; AL0 : allocation vector 0
       db  00h         ; AL1 : allocation vector 1
       dw  0020h       ; CKS : checksum size
       dw  00h         ; OFF : offset for system tracks
-      db  04h         ; PSH : physical sector size shift
+      db  03h         ; PSH : physical sector size shift
       db  0fh         ; PHM : physical sector size mask
 
       db  78h         ; Byte 1 of drive control table
       db  0c0h        ; Byte 2 of drive control table
       db  01          ; interleaving factor
       db  09          ; sector count / track
-      db  80          ; number of usable tracks
+      db  40          ; number of usable tracks
 
       db  09          ; length of the skew table
                       ; skew table
-	db	0,1,2,3,4,5,6,7,8
+    db	0,1,2,3,4,5,6,7,8
 
 
 trs80cpm dw 0040h       ; SPT : 64 byte records / track
@@ -1384,7 +1384,7 @@ trs80cpm dw 0040h       ; SPT : 64 byte records / track
        db  10          ; sector count / track
        db  80          ; number of usable tracks
        db  10          ; length of the skew table
-       ; skew table
+       		       ; skew table
 	db	0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15
 
 end	start
