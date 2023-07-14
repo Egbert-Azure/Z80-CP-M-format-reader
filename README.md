@@ -38,11 +38,15 @@ Default format is MM-D80 aka MONTEZUMA CP/M format.
 - 03/26/2023: Updated MM-D80 skew table, fixed a bug.
 - 05/14/2023: Additional formats added by Jens Guenther.
 
-Output of the possible disk formats was truncated in 'foreign' after one line. In Holte CP/M, there is a 'screen control code' ESC X that enables 'automatic line break' and displays all entries
+The output of the possible disk formats was truncated in 'foreign' after one line. In Holte CP/M, there is a 'screen control code' ESC X that enables 'automatic line break' and displays all entries
 
 - 05/17/2023: Added functionality to automatically enable 'automatic line break' using the screen control code ESC X, allowing all entries to be displayed in the 'foreign' output.Implemented the option to turn off 'automatic line break' after displaying the list. Updated the length back to 10 characters for a more organized and visually appealing listing.
-
-Please refer to the source code for further details and implementation.
+- 7/14/2023: major change and fix to support different work environments:
+  The default DMA address for transient programs is 0080H. The CCP also initializes this area to contain the command tall of the command line. The first position contains the number of characters in the command line, followed by the command line  characters. The character following the last command tail character is set to binary zero. The command line characters are preceded by a leading blank and are translated to ASCII upper-case.
+  That said, with 'Z3PLUS' xtail  equ 0082h and with 'CCP' would be xtail  equ 0080h
+  KUDOs to Jens Guenther finding this out and reporting.
+  
+Referring to the source and look at the source code for more information.
 
 ### Formats Supported by 'foreign.com Ver 2.0'
 
