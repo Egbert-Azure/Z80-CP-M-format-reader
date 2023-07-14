@@ -42,7 +42,7 @@ The output of the possible disk formats was truncated in 'foreign' after one lin
 
 - 05/17/2023: Added functionality to automatically enable 'automatic line break' using the screen control code ESC X, allowing all entries to be displayed in the 'foreign' output.Implemented the option to turn off 'automatic line break' after displaying the list. Updated the length back to 10 characters for a more organized and visually appealing listing.
 - 7/14/2023: major change and fix to support different work environments:
-  The default DMA address for transient programs is 0080H. The CCP also initializes this area to contain the command tall of the command line. The first position contains the number of characters in the command line, followed by the command line  characters. The character following the last command tail character is set to binary zero. The command line characters are preceded by a leading blank and are translated to ASCII upper-case.
+  The default DMA address for transient programs is 0080H. The CCP also initializes this area to contain the command tall of the command line. The first position contains the number of characters in the command line, followed by the command line  characters. The character following the last command tail character is set to binary zero. The command line characters are preceded by a leading blank and are translated to ASCII upper-case. Means, the actual "Command tail" is only located from address 0082h, since the length of the "Command tail" is in 0080h and a space is automatically inserted in 0081h
   That said, with 'Z3PLUS' xtail  equ 0082h and with 'CCP' would be xtail  equ 0080h
   KUDOs to Jens Guenther finding this out and reporting.
   
