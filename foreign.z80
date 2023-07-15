@@ -274,12 +274,6 @@ startlist
 	dw	gdos		
 	db	'HOLTE-G3  $'	; Thomas Holte CP/M 2.2c/3.0a (80T, DS, DD, 768K, 512 Bytes)
 	dw	holteg3
-	db	'MS-DOS    $'	; MS-DOS (80T, DS, DD, 720K, 1024 Bytes)
-	dw	MSDOS
-	db	'S80-DD    $' 	; Klaus Kaempf CP/M 2.2x/3.0 System (80T, DS, DD, 768K, 1024 Bytes)
-	dw	s80dsdd
-	db	'D80-DD    $'	; Klaus Kaempf CP/M 2.2x/3.0 Data (80T, DS, DD, 800K, 1024 Bytes)
-	dw	d80dsdd
 	db	'KAYPRO-2  $'	; Kaypro II (40T, SS, DD, 196K, 512 Bytes)
 	dw	kaypro2
 	db	'Kaypro-4  $'	; Kaypro 4 & 10 (40T, DS, DD, 392K, 512 Bytes)
@@ -310,7 +304,7 @@ startlist
 	dw	mbc1200
 	db 	'MBC-1000  $'	; Sanyo MBC-1000/1100 (40T, DS, DD, 312K, 256 Bytes, Skew 3)
 	dw 	sanyo40
-	db	'MS-DOS    $' 	; MS-DOS discs
+	db	'MS-DOS    $'	; MS-DOS (80T, DS, DD, 720K, 1024 Bytes)
 	dw	MSDOS
 	db	'MM-S40    $'	; Montezuma Micro 40T Standard SYSTEM (40T, SS, DD, 170K, 256 Bytes, Skew 2)
 	dw	mms40
@@ -332,8 +326,6 @@ startlist
 	dw	nabupc
 	db	'NEC-8800  $'	; NEC PC-8800/8801 (40T, DS, DD, 306K, 256 Bytes)
 	dw	nec8800
-	db	'NEWDOS80  $'	; Newdos/80 (80T, DS, DD, 800K, 512 Bytes, Skew 2)
-	dw	newdos80	
 	db	'PROF#4    $'	; Prof80 (Format IV: 80T, DS, DD, 770K, 512 Bytes, Skew 2)
 	dw	prof4
 	db	'OMIKRON   $'	; Omikron Basic (80T, DS, DD, 770K, 512 Bytes, Skew 2)
@@ -364,6 +356,10 @@ startlist
 	dw	schmid
 	db	'SCHROEDER $'	; Gerald Schroeder Genie IIs CP/M 2.2 System (80T, DS, DD, 768K, 1024 Bytes)
 	dw	gsg2s
+	db	'S80-DD    $' 	; Klaus Kaempf CP/M 2.2x/3.0 System (80T, DS, DD, 768K, 1024 Bytes)
+	dw	s80dsdd
+	db	'D80-DD    $'	; Klaus Kaempf CP/M 2.2x/3.0 Data (80T, DS, DD, 800K, 1024 Bytes)
+	dw	d80dsdd
 	db	'TV802     $'	; Televideo 802 (40T, DS, DD, 342K, 256 Bytes)
 	dw	tv802
 	db	'TRS80CPM  $'	; TRS-80 Model I/III/4/4P CP/M (40T, SS, DD, 180K, 512 Bytes)
@@ -1976,33 +1972,7 @@ gdos	dw	0048h		; SPT : 128 byte records / track
 	db	  20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36
 	db	  37,38,39,40,41,42,43,44,45,46,47,48,49,50
 
-; via Github Pilot Chat to test the function
-; Experimental and not all tested in details on real hardware or emulator
-
-; NewDos80 (80T, DS, DD, 640K, 256 Bytes, Skew 3)
-newdos80 dw 0080h       ; SPT : 128 byte records / track
-	db  03h         ; BSH : block shift
-	db  0fh         ; BSM : block mask
-	db  00h         ; EXM : extend mask
-	dw  177Bh       ; DSM : maximum block number
-	dw  007fh       ; DRM : maximum directory entry number
-	db  0F0h        ; AL0 : allocation vector 0
-	db  00h         ; AL1 : allocation vector 1
-	dw  0020h       ; CKS : checksum size
-	dw  00h         ; OFF : offset for system tracks
-	db  0Bh         ; PSH : physical sector size shift
-	db  07Fh        ; PHM : physical sector size mask
-
-	db  78h         ; Byte 1 of drive control table
-	db  0c0h        ; Byte 2 of drive control table
-	db  01          ; interleaving factor
-	db  18          ; sector count / track
-	db  80          ; number of usable tracks
-
-	db  18          ; length of the skew table
-			; skew table
-	db	0,3,6,9,12,15,18,21,24,27,30,33,36,39,42,45,48,51
-	
+; TRS-80 Model I/III/4/4P CP/M (40T, SS, DD, 180K, 512 Bytes)
 trs80cpm dw 0040h       ; SPT : 64 byte records / track
        db  03h         ; BSH : block shift
        db  0fh         ; BSM : block mask
@@ -2024,6 +1994,10 @@ trs80cpm dw 0040h       ; SPT : 64 byte records / track
        db  10          ; length of the skew table
        		       ; skew table
 	db	0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15
-
+; via Github Pilot Chat to test the function
+; Experimental and not all tested in details on real hardware or emulator
+; and are moved to be tested in the future
+; NewDOS/80 (80T, DS, DD, 640K, 512 Bytes)
+; TRS80 CP/M (80T, DS, DD, 640K, 512 Bytes)
 
 end	start
