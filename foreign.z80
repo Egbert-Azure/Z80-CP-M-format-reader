@@ -368,10 +368,20 @@ startlist
 	dw	trs80cpm
 	db	"TRS80-LB  $"	; TRS-80 Model II Lifeboat (77T, SS, DD, 600K, 1024 Bytes, Skew 3)
 	dw 	trslb
+	db	"TRS80-FMG  $"	; ; TRS-80 Model II FMG (77T, SS, DD, 486K, 256 Bytes)
+	dw	trsfmg
+	db	"TRS80-PT  $"	; TRS-80 Model II/12/16 Pickles & Trout (77T, SS, DD, 600K, 512 Bytes)
+	dw	trspt
 	db	'VIS1050   $'	; Visual 1050 (80T, SS, DD, 390K, 512 Bytes)
 	dw	vis1050
 	db	'VORTEX    $'	; exchange format Z-System for CP/M-Plus disks
 	dw	vortex		; Amstrad CPC Vortex (80T, DS, DD, 712K, 512 Bytes)
+	db	'XEROX820I $'	; Xerox 820 (40T, SS, SD, 82K, 128 Bytes, Skew 5)
+	dw	x820
+	db	'XEROX820II$'	; Xerox 820-II (40T, SS, DD, 164K, 256 Bytes, Skew 5)
+	dw	x820ii
+	db	'Z-100'		; Zenith Z-100/Heath H-100 (40T, DS, DD, 320K, 512 Bytes)
+	dw	z100	
 	db	'ZORBA     $'	; Zorba (40T, DS, DD, 390K, 512 Bytes)
 	dw	zorba
 	db	00
@@ -1697,7 +1707,6 @@ robos40	dw	0028h		; SPT : 128 byte records / track
 				; skew table
 	db	  0,1,2,3,4
 
-
 ; Robotron PC 1715 Data (80T, DS, DD, 780K, 1024 Bytes)
 robod80	dw	0050h		; SPT : 128 byte records / track
 	db	  04h		; BSH : block shift
@@ -1770,6 +1779,127 @@ trslb	dw	0040h		; SPT : 128 byte records / track
 	db	   8		; length of the skew table
 				; skew table
 	db	  0,3,6,1,4,7,2,5
+
+; TRS-80 Model II FMG (77T, SS, DD, 486K, 256 Bytes)
+trsfmg	dw	0034h		; SPT : 128 byte records / track
+	db	  04h		; BSH : block shift
+	db	  0Fh		; BSM : block mask
+	db	  01h		; EXM : extend mask
+	dw	00F2h		; DSM : maximum block number
+	dw	003Fh		; DRM : maximum directory entry number
+	db	 080h		; AL0 : allocation vector 0
+	db	  00h		; AL1 : allocation vector 1
+	dw	0010h		; CKS : checksum size
+	dw	  02h		; OFF : offset for system tracks
+	db	  01h		; PSH : physical sector size shift
+	db	  01h		; PHM : physical sector size mask
+
+	db	  00111000B	; Byte 1 of drive control table
+	db	  01000000B	; Byte 2 of drive control table
+	db	  01		; interleavingfactor
+	db	  26		; sector count / track
+	db	  77		; number of usable tracks
+
+	db	  26		; length of the skew table
+				; skew table
+	db	  0,1,2,3,4,5,6,7,8,9,10,11,12,13
+	db	 14,15,16,17,18,19,20,21,22,23,24,25
+
+; TRS-80 Model II/12/16 Pickles & Trout (77T, SS, DD, 600K, 512 Bytes)
+trspt	dw	0040h		; SPT : 128 byte records / track
+	db	  04h		; BSH : block shift
+	db	  0Fh		; BSM : block mask
+	db	  00h		; EXM : extend mask
+	dw	012Bh		; DSM : maximum block number
+	dw	007Fh		; DRM : maximum directory entry number
+	db	 0C0h		; AL0 : allocation vector 0
+	db	  00h		; AL1 : allocation vector 1
+	dw	0020h		; CKS : checksum size
+	dw	  02h		; OFF : offset for system tracks
+	db	  02h		; PSH : physical sector size shift
+	db	  03h		; PHM : physical sector size mask
+
+	db	  00111000B	; Byte 1 of drive control table
+	db	  10000000B	; Byte 2 of drive control table
+	db	  01		; interleavingfactor
+	db	  16		; sector count / track
+	db	  77		; number of usable tracks
+
+	db	  16		; length of the skew table
+				; skew table
+	db	  0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15
+
+; Xerox 820 (40T, SS, SD, 82K, 128 Bytes, Skew 5)
+x820	dw	0012h		; SPT : 128 byte records / track
+	db	  03h		; BSH : block shift
+	db	  07h		; BSM : block mask
+	db	  00h		; EXM : extend mask
+	dw	0051h		; DSM : maximum block number
+	dw	001Fh		; DRM : maximum directory entry number
+	db	 080h		; AL0 : allocation vector 0
+	db	  00h		; AL1 : allocation vector 1
+	dw	0010h		; CKS : checksum size
+	dw	  03h		; OFF : offset for system tracks
+	db	  00h		; PSH : physical sector size shift
+	db	  00h		; PHM : physical sector size mask
+
+	db	  00001000B	; Byte 1 of drive control table
+	db	  00000000B	; Byte 2 of drive control table
+	db	  01		; interleavingfactor
+	db	  18		; sector count / track
+	db	  40		; number of usable tracks
+
+	db	  18		; length of the skew table
+				; skew table
+	db	  0,5,10,15,2,7,12,17,4,9,14,1,6,11,16,3,8,13
+
+; Xerox 820-II (40T, SS, DD, 157K, 256 Bytes)
+x820ii	dw	0022h		; SPT : 128 byte records / track
+	db	  03h		; BSH : block shift
+	db	  07h		; BSM : block mask
+	db	  00h		; EXM : extend mask
+	dw	009Ch		; DSM : maximum block number
+	dw	003Fh		; DRM : maximum directory entry number
+	db	 0C0h		; AL0 : allocation vector 0
+	db	  00h		; AL1 : allocation vector 1
+	dw	0010h		; CKS : checksum size
+	dw	  03h		; OFF : offset for system tracks
+	db	  01h		; PSH : physical sector size shift
+	db	  01h		; PHM : physical sector size mask
+
+	db	  00111000B	; Byte 1 of drive control table
+	db	  01000000B	; Byte 2 of drive control table
+	db	  01		; interleavingfactor
+	db	  17		; sector count / track
+	db	  40		; number of usable tracks
+
+	db	  17		; length of the skew table
+				; skew table
+	db	  0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16
+
+; Zenith Z-100/Heath H-100 (40T, DS, DD, 320K, 512 Bytes)
+z100	dw	0040h		; SPT : 128 byte records / track
+	db	  04h		; BSH : block shift
+	db	  0Fh		; BSM : block mask
+	db	  01h		; EXM : extend mask
+	dw	009Bh		; DSM : maximum block number
+	dw	003Fh		; DRM : maximum directory entry number
+	db	 080h		; AL0 : allocation vector 0
+	db	  00h		; AL1 : allocation vector 1
+	dw	0010h		; CKS : checksum size
+	dw	  01h		; OFF : offset for system tracks
+	db	  02h		; PSH : physical sector size shift
+	db	  03h		; PHM : physical sector size mask
+
+	db	  01111000b	; Byte 1 of drive control table
+	db	  10000000b	; Byte 2 of drive control table
+	db	  02		; interleavingfactor
+	db	  16		; sector count / track
+	db	  40		; number of usable tracks
+
+	db	  16		; length of the skew table
+				; skew table
+	db	  0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15
 
 ; via Github Pilot Chat to test the function
 ; Experimental and not all tested in details on real hardware or emulator
