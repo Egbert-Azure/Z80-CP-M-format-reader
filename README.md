@@ -50,43 +50,58 @@ Referring to the source and look at the source code for more information.
 
 ### Formats Supported by 'foreign.com Ver 2.0'
 
-- **MM-D80:** Montezuma CP/M format: MM-D80 - exchange format via TRSTOOLS (`dw mmd80`)
-- **ALPHA:** Alphatronic P3 (80T, DS, DD, 790K, 1024 Bytes) (`dw alpha`)
-- **ASTER-3S:** Aster CT-80 System (80T, DS, DD, 780K, 1024 Bytes) (`dw aster3s`)
-- **HOLTE-G3:** Thomas Holte CP/M 2.2c/3.0a (80T, DS, DD, 768K, 512 Bytes) (`dw holteg3`)
-- **MS-DOS:** MS-DOS discs (`dw MSDOS`)
-- **S80-DD:** Klaus Kaempf CP/M 2.2x/3.0 System (80T, DS, DD, 768K, 1024 Bytes) (`dw s80dsdd`)
-- **D80-DD:** Klaus Kaempf CP/M 2.2x/3.0 Data (80T, DS, DD, 800K, 1024 Bytes) (`dw d80dsdd`)
-- **KAYPRO-2:** Kaypro II (40T, SS, DD, 196K, 512 Bytes) (`dw kaypro2`)
-- **Kaypro-4:** Kaypro 4 & 10 (40T, DS, DD, 392K, 512 Bytes) (`dw kaypro4`)
-- **Kontron:** KONTRON PSI 908/9C/98 (77T, DS, DD, 256 Bytes, Skew 3) (`dw kontron`)
-- **EAGLE:** Eagle I/II (80T, SS, DD, 390K, 1024 Bytes, Skew 2) (`dw eagle`)
-- **HOLTEG2S:** Thomas Holte Genie IIs/Speedmaster CP/M 2.2a System (80T, SS, DD, 390K, 512 Bytes) (`dw holte2s`)
-- **LNW-80:** LNW Research LNW80 (40T, SS, DD, 166K, 256 Bytes, Skew 5) (`dw lnw80`)
-- **LOWE-A1:** Lowe Electronics CP/M 2.2a (80T, SS, DD, 346K, 256 Bytes) (`dw lowea1`)
-- **LOWE-A2:** Lowe Electronics CP/M 2.2a (80T, DS, DD, 696K, 256 Bytes) (`dw lowea2`)
-- **LOWE-B1:** Lowe Electronics CP/M 2.2b (80T, SS, DD, 384K, 256 Bytes, 4K Block) (`dw loweb1`)
-- **LOWE-B2:** Lowe Electronics CP/M 2.2b (80T, DS, DD, 696K, 256 Bytes, 4K Block) (`dw loweb2`)
-- **MS-DOS:** MS-DOS discs (`dw MSDOS`)
-- **MM-S40:** Montezuma Micro 40T Standard SYSTEM (40T, SS, DD, 170K, 256 Bytes, Skew 2) (`dw mms40`)
-- **MM-D40:** Montezuma Micro 40T Standard DATA (40T, SS, DD, 200K, 512 Bytes, Skew 2) (`dw mmd40`)
-- **MM-S80:** Montezuma Micro 80T DS SYSTEM (80T, DS, DD, 710K, 256 Bytes, Skew 2) (`dw mms80`)
-- **Mattes:** Eberhard Mattes Genie I CP/M 2.2 (80T, DS, DD, 780K, 512 Bytes) (`dw mattes`)
-- **MORROW:** Morrow Micro Decision (40T, SS, DD, 190K, 1024 Bytes, Skew 3) (`dw morrow`)
-- **MD3:** Morrow Micro Decision MD3 (40T, DS, DD, 390K, 1024 Bytes, Skew 3) (`dw md3ds`)
-- **PROF#4:** Prof80 (Format IV: 80T, DS, DD, 770K, 512 Bytes, Skew 2) (`dw prof4`)
-- **OSBORNE:** Osborne 1 (40T, SS, SD, 90K, 256 Bytes, Skew 2) (`dw osborne`)
-- **OSBEXEC:** Osborne 2 Executive (40T, SS, DD, 185K, 1024 Bytes) (`dw osbexec`)
-- **QX10:** Epson QX-10 (40T, DS, DD, 380K, 512 Bytes) (`dw qx10`)
-- **RAINBOW:** DEC Rainbow 100+ (80T, SS, DD, 390K, 512 Bytes, Skew 2) (`dw rainbow`)
-- **RAIR:** Rair (`dw rair`)
-- **DECROBIN:** DEC VT-180 "Robin" (40T, SS, DD, 171K, 512 Bytes, Skew 2) (`dw robin`)
-- **SCHMIDTKE:** Schmidtke Genie I CP/M 2.2 System (80T, DS, DD, 768K, 1024 Bytes) (`dw schmid`)
-- **SCHROEDER:** Gerald Schroeder Genie IIs CP/M 2.2 System (80T, DS, DD, 768K, 1024 Bytes) (`dw gsg2s`)
-- **TV802:** Televideo 802 (40T, DS, DD, 342K, 256 Bytes) (`dw tv802`)
-- **VIS1050:** Visual 1050 (80T, SS, DD, 390K, 512 Bytes) (`dw vis1050`)
-- **VORTEX:** Amstrad CPC Vortex (80T, DS, DD, 712K, 512 Bytes) (`dw vortex`)
-- **ZORBA:** Zorba (40T, DS, DD, 390K, 512 Bytes) (`dw zorba`)
+ # List of implemented alien formats
+
+The following table lists the implemented alien formats along with their descriptions:
+
+| Format      | Description                                                   |
+|-------------|---------------------------------------------------------------|
+| MM-D80      | Montezuma Micro 80T DS DATA (80T, DS, DD, 800K, 512 Bytes)     |
+| ALPHA-P3    | Triumph Adler alphaTronic P3 (80T, DS, DD, 790K, 1024 Bytes)   |
+| ALPHA-PC    | Triumph Adler alphaTronic PC (40T, DS, DD, 320K, 256 Bytes)    |
+| ASTER-3S    | Aster CT-80 System (80T, DS, DD, 780K, 1024 Bytes)            |
+| ALTOS       | Altos 5-15 (80T, DS, DD, 768K, 1024 Bytes)                    |
+| BOND-12     | Bondwell 12 (80T, DS, DD, 768K, 1024 Bytes)                   |
+| CPM-8640    | CP/M-86 v2 (40T, DS, DD, 360K, 512 Bytes)                     |
+| CPM-8680    | CP/M-86 v2 (80T, DS, DD, 720K, 512 Bytes)                     |
+| ELZET       | Elzet 80 (80T, DS, DD, 768K, 1024 Bytes)                      |
+| EXIDY       | Exidy Sorcerer (40T, SS, DD, 196K, 512 Bytes)                  |
+| GDOS        | GDOS 2.4 (80T, DS, DD, 768K, 1024 Bytes)                       |
+| HOLTE-G3    | Thomas Holte CP/M 2.2c/3.0a (80T, DS, DD, 768K, 512 Bytes)     |
+| MS-DOS      | MS-DOS (80T, DS, DD, 720K, 1024 Bytes)                         |
+| S80-DD      | Klaus Kaempf CP/M 2.2x/3.0 System (80T, DS, DD, 768K, 1024 Bytes)|
+| D80-DD      | Klaus Kaempf CP/M 2.2x/3.0 Data (80T, DS, DD, 800K, 1024 Bytes)|
+| KAYPRO-2    | Kaypro II (40T, SS, DD, 196K, 512 Bytes)                       |
+| Kaypro-4    | Kaypro 4 & 10 (40T, DS, DD, 392K, 512 Bytes)                    |
+| Kontron     | KONTRON PSI 908/9C/98 (77T, DS, DD, 256 Bytes, Skew 3)         |
+| EAGLE       | Eagle I/II (80T, SS, DD, 390K, 1024 Bytes, Skew 2)             |
+| HOLTEG2S    | Thomas Holte Genie IIs/Speedmaster CP/M 2.2a System (80T, SS, DD, 390K, 512 Bytes)|
+| LOBO256     | Lobo Systems 256K (80T, SS, DD, 256K, 512 Bytes)                |
+| LOBO512     | Lobo Systems 512K (80T, DS, DD, 512K, 512 Bytes)                |
+| LNW-256     | LNW Research lnw256 (40T, SS, DD, 166K, 256 Bytes, Skew 5)      |
+| LNW-512     | LNW Research lnw256 (40T, SS, DD, 332K, 512 Bytes, Skew 5)      |
+| LOWE-A1     | Lowe Electronics CP/M 2.2a (80T, SS, DD, 346K, 256 Bytes)      |
+| LOWE-A2     | Lowe Electronics CP/M 2.2a (80T, DS, DD, 696K, 256 Bytes)      |
+| LOWE-B1     | Lowe Electronics CP/M 2.2b (80T, SS, DD, 384K, 256 Bytes, 4K Block)|
+| LOWE-B2     | Lowe Electronics CP/M 2.2b (80T, DS, DD, 696K, 256 Bytes, 4K Block)|
+| MBC-1200    | Sanyo MBC-1200/1250 (80T, DS, DD, 624K, 256 Bytes, Skew 3)     |
+| MBC-1000    | Sanyo MBC-1000/1100 (40T, DS, DD, 312K, 256 Bytes, Skew 3)     |
+| MSDOS       | MS-DOS discs                                                  |
+| MM-S40      | Montezuma Micro 40T Standard SYSTEM (40T, SS, DD, 170K, 256 Bytes, Skew 2)|
+| MM-D40      | Montezuma Micro 40T Standard DATA (40T, SS, DD, 200K, 512 Bytes, Skew 2)|
+| MM-S80      | Montezuma Micro 80T DS SYSTEM (80T, DS, DD, 710K, 256 Bytes, Skew 2)|
+| Mattes      | not working properly                                          |
+| MCCPM       | MCCP/M (80T, DS, DD, 800K, 1024 Bytes)                         |
+| MORROW      | Morrow Micro Decision (40T, SS, DD, 190K, 1024 Bytes, Skew 3)  |
+| MONROE      | Monroe 1860 (40T, SS, DD, 190K, 1024 Bytes, Skew 3)             |
+| MD3         | Morrow Micro Decision MD3 (40T, DS, DD, 390K, 1024 Bytes, Skew 3)|
+| NABUPC      | NABU PC (80T, DS, DD, 800K, 1024 Bytes)                         |
+| NEC-8800    | NEC PC-8800/8801 (40T, DS, DD, 306K, 256 Bytes)                 |
+| NEWDOS80    | Newdos/80 (80T, DS, DD, 800K, 512 Bytes, Skew 2)                |
+| PROF#4      | Prof80 (Format IV: 80T, DS, DD, 770K, 512 Bytes, Skew 2)        |
+| OMIKRON     | Omikron Basic (80T, DS, DD, 770K, 512 Bytes, Skew 2)            |
+| OR512       | Oettle & Reichler (80T, DS, DD, 702K, 512 Bytes, Skew 3)         |
+| OR1024      | Oettle & Reichler
 
 ## Drop a Star ⭐
 
