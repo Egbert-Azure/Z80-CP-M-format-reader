@@ -269,7 +269,9 @@ startlist
 	db	'ELZET	   $'	; Elzet 80 (80T, DS, DD, 768K, 1024 Bytes)
 	dw	elzet80
 	db	'EXIDY     $'	; Exidy Sorcerer (40T, SS, DD, 196K, 512 Bytes)
-	dw	exidy		
+	dw	exidy
+	db	'GDOS      $'	; GDOS 2.4 (80T, DS, DD, 768K, 1024 Bytes)
+	dw	gdos		
 	db	'HOLTE-G3  $'	; Thomas Holte CP/M 2.2c/3.0a (80T, DS, DD, 768K, 512 Bytes)
 	dw	holteg3
 	db	'MS-DOS    $'	; MS-DOS (80T, DS, DD, 720K, 1024 Bytes)
@@ -1900,33 +1902,6 @@ z100	dw	0040h		; SPT : 128 byte records / track
 	db	  16		; length of the skew table
 				; skew table
 	db	  0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15
-
-; via Github Pilot Chat to test the function
-; Experimental and not all tested in details on real hardware or emulator
-
-newdos80 dw 0040h       ; SPT : 64 byte records / track
-	db  03h         ; BSH : block shift
-	db  0fh         ; BSM : block mask
-	db  00h         ; EXM : extend mask
-	dw  0ffbh       ; DSM : maximum block number
-	dw  007fh       ; DRM : maximum directory entry number
-	db  0c0h        ; AL0 : allocation vector 0
-	db  00h         ; AL1 : allocation vector 1
-	dw  0020h       ; CKS : checksum size
-	dw  00h         ; OFF : offset for system tracks
-	db  0Ah         ; PSH : physical sector size shift
-	db  03Fh        ; PHM : physical sector size mask
-
-	db  78h         ; Byte 1 of drive control table
-	db  0c0h        ; Byte 2 of drive control table
-	db  01          ; interleaving factor
-	db  18          ; sector count / track
-	db  80          ; number of usable tracks
-
-	db  18          ; length of the skew table
-			; skew table
-	db  0,3,6,9,12,15,18,21,24,27,30,33,36,39,42,45,48,51
-
 ; CP/M-86 v2 (40T, DS, DD, 360K, 512 Bytes)
 cpm8640	dw	0048h		; SPT : 128 byte records / track
 	db	  04h		; BSH : block shift
@@ -1975,6 +1950,59 @@ cpm8680	dw	0048h		; SPT : 128 byte records / track
 				; skew table
 	db	  0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17
 
+; GDOS 2.4 (80T DSDD (80T DS, DD)
+gdos	dw	0048h		; SPT : 128 byte records / track
+	db	  06h		; BSH : block shift
+	db	  3fh		; BSM : block mask
+	db	  07h		; EXM : extend mask
+	dw	0059h		; DSM : maximum block number
+	dw	00ffh		; DRM : maximum directory entry number
+	db	 080h		; AL0 : allocation vector 0
+	db	  00h		; AL1 : allocation vector 1
+	dw	0040h		; CKS : checksum size
+	dw	  00h		; OFF : offset for system tracks
+	db	  01h		; PSH : physical sector size shift
+	db	01h		; PHM : physical sector size mask
+	
+	db	  60h		; Byte 1 der drive control table
+	db	40h		; 256 Bytes / sector
+	
+	db	  02		; interleavingfaktor
+	db	  36		; sector count / track
+	db	  80		; number of usable tracks
+	db	  51		; length of the skew table
+				; Skewtabelle
+	db	  0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19
+	db	  20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36
+	db	  37,38,39,40,41,42,43,44,45,46,47,48,49,50
+
+; via Github Pilot Chat to test the function
+; Experimental and not all tested in details on real hardware or emulator
+
+; NewDos80 (80T, DS, DD, 640K, 256 Bytes, Skew 3)
+newdos80 dw 0080h       ; SPT : 128 byte records / track
+	db  03h         ; BSH : block shift
+	db  0fh         ; BSM : block mask
+	db  00h         ; EXM : extend mask
+	dw  177Bh       ; DSM : maximum block number
+	dw  007fh       ; DRM : maximum directory entry number
+	db  0F0h        ; AL0 : allocation vector 0
+	db  00h         ; AL1 : allocation vector 1
+	dw  0020h       ; CKS : checksum size
+	dw  00h         ; OFF : offset for system tracks
+	db  0Bh         ; PSH : physical sector size shift
+	db  07Fh        ; PHM : physical sector size mask
+
+	db  78h         ; Byte 1 of drive control table
+	db  0c0h        ; Byte 2 of drive control table
+	db  01          ; interleaving factor
+	db  18          ; sector count / track
+	db  80          ; number of usable tracks
+
+	db  18          ; length of the skew table
+			; skew table
+	db	0,3,6,9,12,15,18,21,24,27,30,33,36,39,42,45,48,51
+	
 trs80cpm dw 0040h       ; SPT : 64 byte records / track
        db  03h         ; BSH : block shift
        db  0fh         ; BSM : block mask
