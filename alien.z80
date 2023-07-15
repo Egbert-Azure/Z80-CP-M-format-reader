@@ -209,7 +209,7 @@ einstell
 	call BDOS
 
 ; List of character strings to output
-hallo	db	cr, lf, esc,'R','FOREIGN.COM - Version 2.0',esc,'S'
+hallo	db	cr,lf,esc,'R','ALIEN.COM - Version 3.0 - July 2023',esc,'S'
 	db	cr, lf,'sets drive P to alien disk formats on Genie IIIs with Holte CP/M +',cr, lf,'$'
 error 	db 	cr, lf,'Incorrect format name specified!',cr, lf
 	db	'The following format names are allowed:',cr,lf,cr,lf,esc,'X','$'
