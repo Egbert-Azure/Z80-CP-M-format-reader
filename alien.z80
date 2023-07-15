@@ -252,6 +252,12 @@ dphend                          ; End of this buffer
 startlist
 	db	'MM-D80    $'	; first entry is default - MONTEZUMA CP/M format: MM-D80 - exchange format via TRSTOOLS
 	dw	mmd80		; Montezuma Micro 80T DS DATA (80T, DS, DD, 800K, 512 Bytes, Skew 2)
+	db	'ABC80     $' 	; Luxor ABC80 (40T, SS, DD, 152K, 256 Bytes, Skew 7)
+	dw	abc80
+	db	'ABC800    $' 	; Luxor ABC800 (80T, DS, DD, 760K, 1024 Bytes)
+	dw	abc800
+	db	'ACTRIX    $' 	; Actrix Computer Corporation Access Computer (80T, DS, DD, 780K, 1024 Bytes, Skew 3)
+	dw	actrix	
 	db	'ALPHA-P3  $'	; Triumph Adler alphaTronic P3 (80T, DS, DD, 790K, 1024 Bytes)
 	dw	alpha
 	db	'ALPHA-PC  $'	; Triumph Adler alphaTronic PC (40T, DS, DD, 320K, 256 Bytes)
@@ -1691,7 +1697,7 @@ robos40	dw	0028h		; SPT : 128 byte records / track
 	db	 0C0h		; AL0 : allocation vector 0
 	db	  00h		; AL1 : allocation vector 1
 	dw	0010h		; CKS : checksum size
-	dw	  02h		; OFF : offset for system tracks
+	dw	  00h		; OFF : offset for system tracks
 	db	  03h		; PSH : physical sector size shift
 	db	  07h		; PHM : physical sector size mask
 
@@ -1994,6 +2000,80 @@ trs80cpm dw 0040h       ; SPT : 64 byte records / track
        db  10          ; length of the skew table
        		       ; skew table
 	db	0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15
+
+; ABC-80 (40T, SS, DD, 152K, 256 Bytes, Skew 7)
+abc80	dw	0020h		; SPT : 128 byte records / track
+	db	  03h		; BSH : block shift
+	db	  07h		; BSM : block mask
+	db	  00h		; EXM : extend mask
+	dw	0097h		; DSM : maximum block number
+	dw	003Fh		; DRM : maximum directory entry number
+	db	 0C0h		; AL0 : allocation vector 0
+	db	  00h		; AL1 : allocation vector 1
+	dw	0010h		; CKS : checksum size
+	dw	  02h		; OFF : offset for system tracks
+	db	  01h		; PSH : physical sector size shift
+	db	  01h		; PHM : physical sector size mask
+
+	db	  00111000b	; Byte 1 of drive control table
+	db	  01000000b	; Byte 2 of drive control table
+	db	  01		; interleavingfactor
+	db	  16		; sector count / track
+	db	  40		; number of usable tracks
+
+	db	  16		; length of the skew table
+				; skew table
+	db	 0,7,14,5,12,3,10,1,8,15,6,13,4,11,2,9
+
+; ABC-800 (80T, DS, DD, 632K, 256 Bytes)
+abc800	dw	0040h		; SPT : 128 byte records / track
+	db	  04h		; BSH : block shift
+	db	  0Fh		; BSM : block mask
+	db	  00h		; EXM : extend mask
+	dw	013Bh		; DSM : maximum block number
+	dw	007Fh		; DRM : maximum directory entry number
+	db	 0C0h		; AL0 : allocation vector 0
+	db	  00h		; AL1 : allocation vector 1
+	dw	0020h		; CKS : checksum size
+	dw	  01h		; OFF : offset for system tracks
+	db	  01h		; PSH : physical sector size shift
+	db	  01h		; PHM : physical sector size mask
+
+	db	  01111000b	; Byte 1 of drive control table
+	db	  01000000b	; Byte 2 of drive control table
+	db	  01		; interleavingfactor
+	db	  32		; sector count / track
+	db	  80		; number of usable tracks
+
+	db	  32		; length of the skew table
+				; skew table
+	db	  0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17
+	db	 18,19,20,21,22,23,24,25,26,27,28,29,30,31,32
+
+; Actrix Computer Corporation Access (80T, DS, DD, 780K, 1024 Bytes, Skew 3)
+actrix	dw	0024h		; SPT : 128 byte records / track
+	db	  03h		; BSH : block shift
+	db	  07h		; BSM : block mask
+	db	  00h		; EXM : extend mask
+	dw	00AAh		; DSM : maximum block number
+	dw	003Fh		; DRM : maximum directory entry number
+	db	 0C0h		; AL0 : allocation vector 0
+	db	  00h		; AL1 : allocation vector 1
+	dw	0010h		; CKS : checksum size
+	dw	  02h		; OFF : offset for system tracks
+	db	  02h		; PSH : physical sector size shift
+	db	  03h		; PHM : physical sector size mask
+
+	db	  00111000b	; Byte 1 of drive control table
+	db	  10000000b	; Byte 2 of drive control table
+	db	  01		; interleavingfactor
+	db	   9		; sector count / track
+	db	  40		; number of usable tracks
+
+	db	   9		; length of the skew table
+				; skew table
+	db	  0,3,6,1,4,7,2,5,8
+
 ; via Github Pilot Chat to test the function
 ; Experimental and not all tested in details on real hardware or emulator
 ; and are moved to be tested in the future
