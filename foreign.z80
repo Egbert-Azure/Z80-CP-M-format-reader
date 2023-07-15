@@ -262,8 +262,10 @@ startlist
 	dw	altos 
 	db	'BOND-12   $'	; Bondwell 12 (80T, DS, DD, 768K, 1024 Bytes)
 	dw	bond12
-	db	'CPM-86    $' 	; CP/M-86 (80T, DS, DD, 800K, 1024 Bytes)
-	dw	cpm86
+	db	'CPM-8640   $' 	; CP/M-86 v2 (40T, DS, DD, 360K, 512 Bytes)
+	dw	cpm8640
+	db	'CPM-8680  $' 	; CP/M-86 v2 (80T, DS, DD, 720K, 512 Bytes)
+	dw	cpm8680
 	db	'ELZET	   $'	; Elzet 80 (80T, DS, DD, 768K, 1024 Bytes)
 	dw	elzet80
 	db	'EXIDY     $'	; Exidy Sorcerer (40T, SS, DD, 196K, 512 Bytes)
@@ -304,6 +306,8 @@ startlist
 	dw	loweb2
 	db	'MBC-1200  $'	; Sanyo MBC-1200/1250 (80T, DS, DD, 624K, 256 Bytes, Skew 3)
 	dw	mbc1200
+	db 	'MBC-1000  $'	; Sanyo MBC-1000/1100 (40T, DS, DD, 312K, 256 Bytes, Skew 3)
+	dw 	sanyo40
 	db	'MS-DOS    $' 	; MS-DOS discs
 	dw	MSDOS
 	db	'MM-S40    $'	; Montezuma Micro 40T Standard SYSTEM (40T, SS, DD, 170K, 256 Bytes, Skew 2)
@@ -334,6 +338,8 @@ startlist
 	dw	omikron
 	db	'OR512     $'	; Oettle & Reichler (80T, DS, DD, 702K, 512 Bytes, Skew 3)
 	dw	or512
+	db	'OR1024    $'	; Oettle & Reichler (80T, DS, DD, 702K, 1024 Bytes, Skew 3)
+	dw	or1024		
 	db	'OSBORNE   $'	; Osborne 1 (40T, SS, SD, 90K, 256 Bytes, Skew 2)
 	dw	osborne
 	db	'OSBEXEC   $'	; Osborne 2 Executive (40T, SS, DD, 185K, 1024 Bytes)
@@ -344,6 +350,10 @@ startlist
 	dw	rainbow
 	db	'RAIR      $'
 	dw	rair
+	db	'ROBO80S    $'	; Robotron PC 1715 System (40T, SS, DD, 190K, 1024 Bytes)
+	dw	robos40
+	db	'ROBO80D   $'	; Robotron PC 1715 Data (80T, DS, DD, 390K, 1024 Bytes)
+	dw	robod80
 	db	'RSCPM3    $'	; Radio Shack TRS-80 Model 4/4P CP/M Plus (40T, SS, DD, 156K, 512 Bytes)
 	dw	rscpm3
 	db	'DECROBIN  $'	; DEC VT-180 "Robin" (40T, SS, DD, 171K, 512 Bytes, Skew 2)
@@ -356,6 +366,8 @@ startlist
 	dw	tv802
 	db	'TRS80CPM  $'	; TRS-80 Model I/III/4/4P CP/M (40T, SS, DD, 180K, 512 Bytes)
 	dw	trs80cpm
+	db	"TRS80-LB  $"	; TRS-80 Model II Lifeboat (77T, SS, DD, 600K, 1024 Bytes, Skew 3)
+	dw 	trslb
 	db	'VIS1050   $'	; Visual 1050 (80T, SS, DD, 390K, 512 Bytes)
 	dw	vis1050
 	db	'VORTEX    $'	; exchange format Z-System for CP/M-Plus disks
@@ -1637,6 +1649,127 @@ or512	dw	0048h		; SPT : 128 byte records / track
 				; skew table
 	db	  0,3,6,1,4,7,2,5,8,9,12,15,10,13,16,11,14,17
 
+; Oettle & Reichler (80T, DS, DD, 780K, 1024 Bytes)
+or1024	dw	0050h		; SPT : 128 byte records / track
+	db	  05h		; BSH : block shift
+	db	  1Fh		; BSM : block mask
+	db	  03h		; EXM : extend mask
+	dw	00C2h		; DSM : maximum block number
+	dw	007Fh		; DRM : maximum directory entry number
+	db	 080h		; AL0 : allocation vector 0
+	db	  00h		; AL1 : allocation vector 1
+	dw	0040h		; CKS : checksum size
+	dw	  02h		; OFF : offset for system tracks
+	db	  03h		; PSH : physical sector size shift
+	db	  07h		; PHM : physical sector size mask
+
+	db	  01111000b	; Byte 1 of drive control table
+	db	  11000000b	; Byte 2 of drive control table
+	db	  1		; interleavingfactor
+	db	  10		; sector count / track
+	db	  80		; number of usable tracks
+
+	db	  10		; length of the skew table
+				; skew table
+	db	 0,1,2,3,4,5,6,7,8,9
+
+; Robotron PC 1715 System (40T, SS, DD, 190K, 1024 Bytes)
+robos40	dw	0028h		; SPT : 128 byte records / track
+	db	  03h		; BSH : block shift
+	db	  07h		; BSM : block mask
+	db	  00h		; EXM : extend mask
+	dw	00BDh		; DSM : maximum block number
+	dw	003Fh		; DRM : maximum directory entry number
+	db	 0C0h		; AL0 : allocation vector 0
+	db	  00h		; AL1 : allocation vector 1
+	dw	0010h		; CKS : checksum size
+	dw	  02h		; OFF : offset for system tracks
+	db	  03h		; PSH : physical sector size shift
+	db	  07h		; PHM : physical sector size mask
+
+	db	  00111000b	; Byte 1 of drive control table
+	db	  11000000b	; Byte 2 of drive control table
+	db	  02		; interleavingfactor
+	db	   5		; sector count / track
+	db	  40		; number of usable tracks
+
+	db	   5		; length of the skew table
+				; skew table
+	db	  0,1,2,3,4
+
+
+; Robotron PC 1715 Data (80T, DS, DD, 780K, 1024 Bytes)
+robod80	dw	0050h		; SPT : 128 byte records / track
+	db	  04h		; BSH : block shift
+	db	  0Fh		; BSM : block mask
+	db	  00h		; EXM : extend mask
+	dw	018Fh		; DSM : maximum block number
+	dw	007Fh		; DRM : maximum directory entry number
+	db	 0C0h		; AL0 : allocation vector 0
+	db	  00h		; AL1 : allocation vector 1
+	dw	0020h		; CKS : checksum size
+	dw	  00h		; OFF : offset for system tracks
+	db	  03h		; PSH : physical sector size shift
+	db	  07h		; PHM : physical sector size mask
+
+	db	  01111000b	; Byte 1 of drive control table
+	db	  11000000b	; Byte 2 of drive control table
+	db	  02		; interleavingfactor
+	db	  10		; sector count / track
+	db	  80		; number of usable tracks
+
+	db	  10		; length of the skew table
+				; skew table
+	db	  0,1,2,3,4,5,6,7,8,9
+
+; Sanyo MBC-1000/1100 (40T, DS, DD, 312K, 256 Bytes, Skew 3)
+sanyo40	dw	0040h		; SPT : 128 byte records / track
+	db	  04h		; BSH : block shift
+	db	  0Fh		; BSM : block mask
+	db	  01h		; EXM : extend mask
+	dw	009Bh		; DSM : maximum block number
+	dw	003Fh		; DRM : maximum directory entry number
+	db	 080h		; AL0 : allocation vector 0
+	db	  00h		; AL1 : allocation vector 1
+	dw	0010h		; CKS : checksum size
+	dw	  01h		; OFF : offset for system tracks
+	db	  01h		; PSH : physical sector size shift
+	db	  01h		; PHM : physical sector size mask
+
+	db	  01111000b	; Byte 1 of drive control table
+	db	  01000000b	; Byte 2 of drive control table
+	db	  01		; interleavingfactor
+	db	  32		; sector count / track
+	db	  40		; number of usable tracks
+
+	db	  32		; length of the skew table
+				; skew table
+	db	 0,3,6,9,12,15,2,5,8,11,14,1,4,7,10,13,16,19
+	db	22,25,28,31,18,21,24,27,30,17,20,23,26,29
+
+; TRS-80 Model II Lifeboat (77T, SS, DD, 600K, 1024 Bytes, Skew 3)
+trslb	dw	0040h		; SPT : 128 byte records / track
+	db	  04h		; BSH : block shift
+	db	  0Fh		; BSM : block mask
+	db	  00h		; EXM : extend mask
+	dw	012Bh		; DSM : maximum block number
+	dw	007Fh		; DRM : maximum directory entry number
+	db	 0C0h		; AL0 : allocation vector 0
+	db	  00h		; AL1 : allocation vector 1
+	dw	0020h		; CKS : checksum size
+	dw	  02h		; OFF : offset for system tracks
+	db	  03h		; PSH : physical sector size shift
+	db	  07h		; PHM : physical sector size mask
+
+	db	  00111000B	; Byte 1 of drive control table
+	db	  11000000B	; Byte 2 of drive control table
+	db	  03		; interleavingfactor
+	db	   8		; sector count / track
+	db	  77		; number of usable tracks
+
+	db	   8		; length of the skew table
+				; skew table
+	db	  0,3,6,1,4,7,2,5
 
 ; via Github Pilot Chat to test the function
 ; Experimental and not all tested in details on real hardware or emulator
@@ -1664,30 +1797,53 @@ newdos80 dw 0040h       ; SPT : 64 byte records / track
 			; skew table
 	db  0,3,6,9,12,15,18,21,24,27,30,33,36,39,42,45,48,51
 
-; unclear if CP/M-86 format works with Holte CP/M
-cpm86 dw 0080h       ; SPT : 128 byte records / track
-      db  03h         ; BSH : block shift
-      db  0fh         ; BSM : block mask
-      db  00h         ; EXM : extend mask
-      dw  03ffh       ; DSM : maximum block number
-      dw  007fh       ; DRM : maximum directory entry number
-      db  0c0h        ; AL0 : allocation vector 0
-      db  00h         ; AL1 : allocation vector 1
-      dw  0020h       ; CKS : checksum size
-      dw  00h         ; OFF : offset for system tracks
-      db  03h         ; PSH : physical sector size shift
-      db  0fh         ; PHM : physical sector size mask
+; CP/M-86 v2 (40T, DS, DD, 360K, 512 Bytes)
+cpm8640	dw	0048h		; SPT : 128 byte records / track
+	db	  04h		; BSH : block shift
+	db	  0Fh		; BSM : block mask
+	db	  01h		; EXM : extend mask
+	dw	00AAh		; DSM : maximum block number
+	dw	003Fh		; DRM : maximum directory entry number
+	db	 080h		; AL0 : allocation vector 0
+	db	  00h		; AL1 : allocation vector 1
+	dw	0010h		; CKS : checksum size
+	dw	  02h		; OFF : offset for system tracks
+	db	  02h		; PSH : physical sector size shift
+	db	  03h		; PHM : physical sector size mask
 
-      db  78h         ; Byte 1 of drive control table
-      db  0c0h        ; Byte 2 of drive control table
-      db  01          ; interleaving factor
-      db  09          ; sector count / track
-      db  40          ; number of usable tracks
+	db	  01111000b	; Byte 1 of drive control table
+	db	  10000000b	; Byte 2 of drive control table
+	db	  01		; interleavingfactor
+	db	  18		; sector count / track
+	db	  40		; number of usable tracks
 
-      db  09          ; length of the skew table
-                      ; skew table
-    db	0,1,2,3,4,5,6,7,8
+	db	  18		; length of the skew table
+				; skew table
+	db	  0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17
 
+; CP/M-86 v2 (80T, DS, DD, 720K, 512 Bytes)
+cpm8680	dw	0048h		; SPT : 128 byte records / track
+	db	  04h		; BSH : block shift
+	db	  0Fh		; BSM : block mask
+	db	  01h		; EXM : extend mask
+	dw	015Eh		; DSM : maximum block number
+	dw	007Fh		; DRM : maximum directory entry number
+	db	 0F0h		; AL0 : allocation vector 0
+	db	  00h		; AL1 : allocation vector 1
+	dw	0040h		; CKS : checksum size
+	dw	  02h		; OFF : offset for system tracks
+	db	  02h		; PSH : physical sector size shift
+	db	  03h		; PHM : physical sector size mask
+
+	db	  01111000b	; Byte 1 of drive control table
+	db	  10000000b	; Byte 2 of drive control table
+	db	  01		; interleavingfactor
+	db	  18		; sector count / track
+	db	  80		; number of usable tracks
+
+	db	  18		; length of the skew table
+				; skew table
+	db	  0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17
 
 trs80cpm dw 0040h       ; SPT : 64 byte records / track
        db  03h         ; BSH : block shift
