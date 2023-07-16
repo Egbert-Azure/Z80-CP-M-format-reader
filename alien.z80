@@ -358,10 +358,14 @@ startlist
 	dw	rainbow
 	db	'RAIR      $'
 	dw	rair
-	db	'ROBO80S    $'	; Robotron PC 1715 System (40T, SS, DD, 190K, 1024 Bytes)
+	db	'ROBO-D40  $' 	; Robotron PC 1715 Data (40T, SS, DD, 190K, 1024 Bytes, Data Disk)
+	dw	robod40
+	db	'ROBO-S40  $' 	; Robotron PC 1715 Data (40T, SS, DD, 190K, 1024 Bytes, System Disk)
 	dw	robos40
-	db	'ROBO80D   $'	; Robotron PC 1715 Data (80T, DS, DD, 390K, 1024 Bytes)
+	db	'ROBO-D80  $' 	; Robotron PC 1715 Data (80T, DS, DD, 780K, 1024 Bytes, Data Disk)
 	dw	robod80
+	db	'ROBO-S80  $' 	; Robotron PC 1715 Data (80T, DS, DD, 780K, 1024 Bytes, System Disk)
+	dw	robos80
 	db	'RSCPM3    $'	; Radio Shack TRS-80 Model 4/4P CP/M Plus (40T, SS, DD, 156K, 512 Bytes)
 	dw	rscpm3
 	db	'DECROBIN  $'	; DEC VT-180 "Robin" (40T, SS, DD, 171K, 512 Bytes, Skew 2)
@@ -1697,6 +1701,30 @@ or1024	dw	0050h		; SPT : 128 byte records / track
 				; skew table
 	db	 0,1,2,3,4,5,6,7,8,9
 
+; Robotron PC 1715 Data (40T, SS, DD, 190K, 1024 Bytes)
+robod40	dw	0028h		; SPT : 128 byte records / track
+	db	  03h		; BSH : block shift
+	db	  07h		; BSM : block mask
+	db	  00h		; EXM : extend mask
+	dw	00BDh		; DSM : maximum block number
+	dw	003Fh		; DRM : maximum directory entry number
+	db	 0C0h		; AL0 : allocation vector 0
+	db	  00h		; AL1 : allocation vector 1
+	dw	0010h		; CKS : checksum size
+	dw	  00h		; OFF : offset for system tracks
+	db	  03h		; PSH : physical sector size shift
+	db	  07h		; PHM : physical sector size mask
+
+	db	  00111000b	; Byte 1 of drive control table
+	db	  11000000b	; Byte 2 of drive control table
+	db	  02		; interleavingfactor
+	db	   5		; sector count / track
+	db	  40		; number of usable tracks
+
+	db	   5		; length of the skew table
+				; skew table
+	db	  0,1,2,3,4
+
 ; Robotron PC 1715 System (40T, SS, DD, 190K, 1024 Bytes)
 robos40	dw	0028h		; SPT : 128 byte records / track
 	db	  03h		; BSH : block shift
@@ -1707,7 +1735,7 @@ robos40	dw	0028h		; SPT : 128 byte records / track
 	db	 0C0h		; AL0 : allocation vector 0
 	db	  00h		; AL1 : allocation vector 1
 	dw	0010h		; CKS : checksum size
-	dw	  00h		; OFF : offset for system tracks
+	dw	  02h		; OFF : offset for system tracks
 	db	  03h		; PSH : physical sector size shift
 	db	  07h		; PHM : physical sector size mask
 
@@ -1745,6 +1773,30 @@ robod80	dw	0050h		; SPT : 128 byte records / track
 				; skew table
 	db	  0,1,2,3,4,5,6,7,8,9
 
+; Robotron PC 1715 System (80T, DS, DD, 780K, 1024 Bytes)
+robos80	dw	0050h		; SPT : 128 byte records / track
+	db	  04h		; BSH : block shift
+	db	  0Fh		; BSM : block mask
+	db	  00h		; EXM : extend mask
+	dw	0185h		; DSM : maximum block number
+	dw	007Fh		; DRM : maximum directory entry number
+	db	 0C0h		; AL0 : allocation vector 0
+	db	  00h		; AL1 : allocation vector 1
+	dw	0020h		; CKS : checksum size
+	dw	  02h		; OFF : offset for system tracks
+	db	  03h		; PSH : physical sector size shift
+	db	  07h		; PHM : physical sector size mask
+
+	db	  01111000b	; Byte 1 of drive control table
+	db	  11000000b	; Byte 2 of drive control table
+	db	  02		; interleavingfactor
+	db	  10		; sector count / track
+	db	  80		; number of usable tracks
+
+	db	  10		; length of the skew table
+				; skew table
+	db	0,1,2,3,4,5,6,7,8,9
+	
 ; Sanyo MBC-1000/1100 (40T, DS, DD, 312K, 256 Bytes, Skew 3)
 sanyo40	dw	0040h		; SPT : 128 byte records / track
 	db	  04h		; BSH : block shift
