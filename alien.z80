@@ -337,7 +337,7 @@ startlist
 	dw	nec8800
 	db	'PROF#4    $'	; Prof80 (Format IV: 80T, DS, DD, 770K, 512 Bytes, Skew 2)
 	dw	prof4
-	db	'OMIKRON   $'	; Omikron Basic (80T, DS, DD, 770K, 512 Bytes, Skew 2)
+	db	'OMIKRON   $'	; Omikron Mapper I TRS-80 Model I/III (35T, SS, SD, 83K, 128 Bytes, Skew 4)
 	dw	omikron
 	db	'OR512     $'	; Oettle & Reichler (80T, DS, DD, 702K, 512 Bytes, Skew 3)
 	dw	or512

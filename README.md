@@ -98,7 +98,7 @@ Referring to the source and look at the source code for more information.
 | NABUPC      | NABU PC (80T, DS, DD, 800K, 1024 Bytes)                         |
 | NEC-8800    | NEC PC-8800/8801 (40T, DS, DD, 306K, 256 Bytes)                 |
 | PROF#4      | Prof80 (Format IV: 80T, DS, DD, 770K, 512 Bytes, Skew 2)         |
-| OMIKRON     | Omikron Basic (80T, DS, DD, 770K, 512 Bytes, Skew 2)            |
+| OMIKRON     | Omikron Mapper I TRS-80 Model I/III (35T, SS, SD, 83K, 128 Bytes, Skew 4)           |
 | OR512       | Oettle & Reichler (80T, DS, DD, 702K, 512 Bytes, Skew 3)         |
 | OR1024      | Oettle & Reichler (80T, DS, DD, 702K, 1024 Bytes, Skew 3)        |
 | OSBORNE     | Osborne 1 (40T, SS, SD, 90K, 256 Bytes, Skew 2)                 |
