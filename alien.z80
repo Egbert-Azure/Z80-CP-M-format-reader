@@ -265,9 +265,15 @@ startlist
 	db	'ASTER-3S  $'	; Aster CT-80 System (80T, DS, DD, 780K, 1024 Bytes)
 	dw	aster3s
 	db	'ALTOS     $'	; Altos 5-15 (80T, DS, DD, 768K, 1024 Bytes)
-	dw	altos 
+	dw	altos
+	db	'BOND-2   $'	; Bondwell 2 (80T, SS, DD, 350K, 256 Bytes)
+	dw	bond2
 	db	'BOND-12   $'	; Bondwell 12 (80T, DS, DD, 768K, 1024 Bytes)
 	dw	bond12
+	db	'BULLET    $' 	; Wave Mate Bullet (80T, DS, DD, 790K, 1024 Bytes)
+	dw	bullet
+	db	'CASIO    $' 	; Casio FP-1100/FP-1020 (40T, DS, DD, 320K, 256 Bytes)
+	dw	casio
 	db	'CPM-8640   $' 	; CP/M-86 v2 (40T, DS, DD, 360K, 512 Bytes)
 	dw	cpm8640
 	db	'CPM-8680  $' 	; CP/M-86 v2 (80T, DS, DD, 720K, 512 Bytes)
@@ -306,6 +312,8 @@ startlist
 	dw	loweb1
 	db	'LOWE-B2   $'	; Lowe Electronics CP/M 2.2b (80T, DS, DD, 696K, 256 Bytes, 4K Block)
 	dw	loweb2
+	db	'MAGIC   $'	; Magic PBC-88 (40T, DS, DD, 390K, 512 Bytes)
+	dw	magic
 	db	'MBC-1200  $'	; Sanyo MBC-1200/1250 (80T, DS, DD, 624K, 256 Bytes, Skew 3)
 	dw	mbc1200
 	db 	'MBC-1000  $'	; Sanyo MBC-1000/1100 (40T, DS, DD, 312K, 256 Bytes, Skew 3)
@@ -362,6 +370,8 @@ startlist
 	dw	schmid
 	db	'SCHROEDER $'	; Gerald Schroeder Genie IIs CP/M 2.2 System (80T, DS, DD, 768K, 1024 Bytes)
 	dw	gsg2s
+	db	'SOABAR    $' 	; Soabar CDX 31 (40T, DS, DD, 390K, 1024 Bytes)
+	dw	soabar
 	db	'S80-DD    $' 	; Klaus Kaempf CP/M 2.2x/3.0 System (80T, DS, DD, 768K, 1024 Bytes)
 	dw	s80dsdd
 	db	'D80-DD    $'	; Klaus Kaempf CP/M 2.2x/3.0 Data (80T, DS, DD, 800K, 1024 Bytes)
@@ -2073,6 +2083,127 @@ actrix	dw	0024h		; SPT : 128 byte records / track
 	db	   9		; length of the skew table
 				; skew table
 	db	  0,3,6,1,4,7,2,5,8
+
+; Bondwell 2 (80T, SS, DD, 350K, 256 Bytes)
+bond2	dw	0024h		; SPT : 128 byte records / track
+	db	  04h		; BSH : block shift
+	db	  0Fh		; BSM : block mask
+	db	  01h		; EXM : extend mask
+	dw	00AEh		; DSM : maximum block number
+	dw	007Fh		; DRM : maximum directory entry number
+	db	 0C0h		; AL0 : allocation vector 0
+	db	  00h		; AL1 : allocation vector 1
+	dw	0020h		; CKS : checksum size
+	dw	  02h		; OFF : offset for system tracks
+	db	  01h		; PSH : physical sector size shift
+	db	  01h		; PHM : physical sector size mask
+
+	db	  00110000b	; Byte 1 of drive control table
+	db	  01000000b	; Byte 2 of drive control table
+	db	  01		; interleavingfactor
+	db	  18		; sector count / track
+	db	  80		; number of usable tracks
+
+	db	  18		; length of the skew table
+				; skew table
+	db	 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17
+
+; Wave Mate Bullet (80T, DS, DD, 790K, 1024 Bytes)
+bullet	dw	0050h		; SPT : 128 byte records / track
+	db	  04h		; BSH : block shift
+	db	  0Fh		; BSM : block mask
+	db	  00h		; EXM : extend mask
+	dw	018Ah		; DSM : maximum block number
+	dw	007Fh		; DRM : maximum directory entry number
+	db	 0C0h		; AL0 : allocation vector 0
+	db	  00h		; AL1 : allocation vector 1
+	dw	0020h		; CKS : checksum size
+	dw	  01h		; OFF : offset for system tracks
+	db	  03h		; PSH : physical sector size shift
+	db	  07h		; PHM : physical sector size mask
+
+	db	  01111000b	; Byte 1 of drive control table
+	db	  11000000b	; Byte 2 of drive control table
+	db	  1		; interleavingfactor
+	db	  10		; sector count / track
+	db	  80		; number of usable tracks
+
+	db	  10		; length of the skew table
+				; skew table
+	db	 0,1,2,3,4,5,6,7,8,9
+
+; Casio FP-1100/FP-1020 (40T, DS, DD, 320K, 256 Bytes)
+casio	dw	0040h		; SPT : 128 byte records / track
+	db	  04h		; BSH : block shift
+	db	  0Fh		; BSM : block mask
+	db	  01h		; EXM : extend mask
+	dw	0097h		; DSM : maximum block number
+	dw	007Fh		; DRM : maximum directory entry number
+	db	 0C0h		; AL0 : allocation vector 0
+	db	  00h		; AL1 : allocation vector 1
+	dw	0020h		; CKS : checksum size
+	dw	  02h		; OFF : offset for system tracks
+	db	  01h		; PSH : physical sector size shift
+	db	  01h		; PHM : physical sector size mask
+
+	db	  01111000b	; Byte 1 of drive control table
+	db	  01000000b	; Byte 2 of drive control table
+	db	  01		; interleavingfactor
+	db	  32		; sector count / track
+	db	  40		; number of usable tracks
+
+	db	  32		; length of the skew table
+				; skew table
+	db	  0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17
+	db	 18,19,20,21,22,23,24,25,26,27,28,29,30,31
+
+; Magic PBC-88 (40T, DS, DD, 390K, 512 Bytes)
+magic	dw	0050h		; SPT : 128 byte records / track
+	db	  04h		; BSH : block shift
+	db	  0Fh		; BSM : block mask
+	db	  01h		; EXM : extend mask
+	dw	00C2h		; DSM : maximum block number
+	dw	003Fh		; DRM : maximum directory entry number
+	db	 080h		; AL0 : allocation vector 0
+	db	  00h		; AL1 : allocation vector 1
+	dw	0010h		; CKS : checksum size
+	dw	  01h		; OFF : offset for system tracks
+	db	  02h		; PSH : physical sector size shift
+	db	  03h		; PHM : physical sector size mask
+
+	db	  01111000b	; Byte 1 of drive control table
+	db	  10000000b	; Byte 2 of drive control table
+	db	  01		; interleavingfactor
+	db	  20		; sector count / track
+	db	  40		; number of usable tracks
+
+	db	  20		; length of the skew table
+				; skew table
+	db	  0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19
+
+; Soabar CDX 31 (40T, DS, DD, 390K, 1024 Bytes)
+soabar	dw	0050h		; SPT : 128 byte records / track
+	db	  04h		; BSH : block shift
+	db	  0Fh		; BSM : block mask
+	db	  01h		; EXM : extend mask
+	dw	00C2h		; DSM : maximum block number
+	dw	003Fh		; DRM : maximum directory entry number
+	db	 080h		; AL0 : allocation vector 0
+	db	  00h		; AL1 : allocation vector 1
+	dw	0020h		; CKS : checksum size
+	dw	  01h		; OFF : offset for system tracks
+	db	  03h		; PSH : physical sector size shift
+	db	  07h		; PHM : physical sector size mask
+
+	db	  01111000b	; Byte 1 of drive control table
+	db	  11000000b	; Byte 2 of drive control table
+	db	  02		; interleavingfactor
+	db	  10		; sector count / track
+	db	  40		; number of usable tracks
+
+	db	  10		; length of the skew table
+				; skew table
+	db	  0,1,2,3,4,5,6,7,8,9
 
 ; via Github Pilot Chat to test the function
 ; Experimental and not all tested in details on real hardware or emulator
