@@ -248,7 +248,8 @@ dphend                          ; End of this buffer
 
 ; List of implemented alien formats
 ; The length of the character string is limited to 10.
-; lower letters in db 'name $' signals: not working properly
+; The first entry is the default format, which is used if no format name is specified.
+
 startlist
 	db	'MM-D80    $'	; first entry is default - MONTEZUMA CP/M format: MM-D80 - exchange format via TRSTOOLS
 	dw	mmd80		; Montezuma Micro 80T DS DATA (80T, DS, DD, 800K, 512 Bytes, Skew 2)
@@ -290,8 +291,6 @@ startlist
 	dw	kaypro2
 	db	'Kaypro-4  $'	; Kaypro 4 & 10 (40T, DS, DD, 392K, 512 Bytes)
 	dw	kaypro4
-	db	'Kontron   $'	; KONTRON PSI 908/9C/98 (77T, DS, DD, 256 Bytes, Skew 3)
-	dw	kontron
 	db	'EAGLE     $'	; Eagle I/II (80T, SS, DD, 390K, 1024 Bytes, Skew 2)
 	dw	eagle
 	db	'HOLTEG2S  $'	; Thomas Holte Genie IIs/Speedmaster CP/M 2.2a System (80T, SS, DD, 390K, 512 Bytes)
@@ -326,8 +325,6 @@ startlist
 	dw	mmd40
 	db	'MM-S80    $'	; Montezuma Micro 80T DS SYSTEM (80T, DS, DD, 710K, 256 Bytes, Skew 2)
 	dw	mms80
-	db	'Mattes    $'	; not working properly
-	dw	mattes		; Eberhard Mattes Genie I CP/M 2.2 (80T, DS, DD, 780K, 512 Bytes)
 	db	'MCCPM     $'	; MCCP/M (80T, DS, DD, 800K, 1024 Bytes)
 	dw	mccpm
 	db	'MORROW    $'	; Morrow Micro Decision (40T, SS, DD, 190K, 1024 Bytes, Skew 3)
@@ -641,29 +638,31 @@ kaypro4	dw	0050h		; SPT : 128 byte records / track
 				; skew table
 	db	  0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19
 
-kontron	dw	0040h		; SPT : 128 byte records / track
-	db	  04h		; BSH : block shift
-	db	  0Fh		; BSM : block mask
-	db	  00h		; EXM : extend mask
-	dw	012Bh		; DSM : maximum block number
-	dw	00FFh		; DRM : maximum directory entry number
-	db	 0F0h		; AL0 : allocation vector 0
-	db	  00h		; AL1 : allocation vector 1
-	dw	0040h		; CKS : checksum size
-	dw	  04h		; OFF : offset for system tracks
-	db	  01h		; PSH : physical sector size shift
-	db	  01h		; PHM : physical sector size mask
-
-	db	01111000B	; Byte 1 of drive control table
-	db	01000000B	; Byte 2 of drive control table
-	db	    1		; interleavingfaktor
-	db	   32		; sector count / track
-	db	   77		; number of usable tracks
-
-	db	   32		; length of the skew table
-				; skew table
-	db	 0,3,6,9,12,15,2,5,8,11,14,1,4,7,10,13,16,19
-	db	22,25,28,31,17,20,23,26,29,18,21,24,27,30
+; kontron	dw	0040h		; SPT : 128 byte records / track
+; this format was used in fremd.com since the beginning but didn't work
+; with the new version and sdltrs.  I'm leaving the format here in case it is needed
+;	db	  04h		; BSH : block shift
+;	db	  0Fh		; BSM : block mask
+;	db	  00h		; EXM : extend mask
+;	dw	012Bh		; DSM : maximum block number
+;	dw	00FFh		; DRM : maximum directory entry number
+;	db	 0F0h		; AL0 : allocation vector 0
+;	db	  00h		; AL1 : allocation vector 1
+;	dw	0040h		; CKS : checksum size
+;	dw	  04h		; OFF : offset for system tracks
+;	db	  01h		; PSH : physical sector size shift
+;	db	  01h		; PHM : physical sector size mask
+;
+;	db	01111000B	; Byte 1 of drive control table
+;	db	01000000B	; Byte 2 of drive control table
+;	db	    1		; interleavingfaktor
+;	db	   32		; sector count / track
+;	db	   77		; number of usable tracks
+;
+;	db	   32		; length of the skew table
+;				; skew table
+;	db	 0,3,6,9,12,15,2,5,8,11,14,1,4,7,10,13,16,19
+;	db	22,25,28,31,17,20,23,26,29,18,21,24,27,30
 
 ; LNW Research lnw256 (40T, SS, DD, 166K, 256 Bytes, Skew 5)
 lnw256	dw	0024h		; SPT : 128 byte records / track
@@ -833,28 +832,30 @@ vortex	dw	0048h		; SPT : 128 byte records / track
 				; skew table
 	db	  0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17
 
-mattes	dw	0050h		; SPT : 128 byte records / track
-	db	  05h		; BSH : block shift
-	db	  1Fh		; BSM : block mask
-	db	  03h		; EXM : extend mask
-	dw	00C5h		; DSM : maximum block number
-	dw	007Fh		; DRM : maximum directory entry number
-	db	 080h		; AL0 : allocation vector 0
-	db	  00h		; AL1 : allocation vector 1
-	dw	0020h		; CKS : checksum size
-	dw	  03h		; OFF : offset for system tracks
-	db	  02h		; PSH : physical sector size shift
-	db	  03h		; PHM : physical sector size mask
-
-	db	  01100000B	; Byte 1 of drive control table
-	db	  10100000B	; Byte 2 of drive control table
-	db	  01		; interleavingfactor
-	db	  20		; sector count / track
-	db	  80		; number of usable tracks
-
-	db	  20		; length of the skew table
-				; skew table
-	db	  0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19
+; format doesn't work with Holte CP/M 3.0 and sdltrs
+; I keep it here for reference
+; mattes	dw	0050h		; SPT : 128 byte records / track
+;	db	  05h		; BSH : block shift
+;	db	  1Fh		; BSM : block mask
+;	db	  03h		; EXM : extend mask
+;	dw	00C5h		; DSM : maximum block number
+;	dw	007Fh		; DRM : maximum directory entry number
+;	db	 080h		; AL0 : allocation vector 0
+;	db	  00h		; AL1 : allocation vector 1
+;	dw	0020h		; CKS : checksum size
+;	dw	  03h		; OFF : offset for system tracks
+;	db	  02h		; PSH : physical sector size shift
+;	db	  03h		; PHM : physical sector size mask
+;
+;	db	  01100000B	; Byte 1 of drive control table
+;	db	  10100000B	; Byte 2 of drive control table
+;	db	  01		; interleavingfactor
+;	db	  20		; sector count / track
+;	db	  80		; number of usable tracks
+;
+;	db	  20		; length of the skew table
+;				; skew table
+;	db	  0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19
 
 ; Montezuma Micro 40T Standard SYSTEM (40T, SS, DD, 170K, 256 Bytes, Skew 2)
 mms40	dw	0024h		; SPT : 128 byte records / track
