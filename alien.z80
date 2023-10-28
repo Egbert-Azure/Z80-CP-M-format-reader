@@ -267,15 +267,15 @@ startlist
 	dw	aster3s
 	db	'ALTOS     $'	; Altos 5-15 (80T, DS, DD, 768K, 1024 Bytes)
 	dw	altos
-	db	'BOND-2   $'	; Bondwell 2 (80T, SS, DD, 350K, 256 Bytes)
+	db	'BOND-2    $'	; Bondwell 2 (80T, SS, DD, 350K, 256 Bytes)
 	dw	bond2
 	db	'BOND-12   $'	; Bondwell 12 (80T, DS, DD, 768K, 1024 Bytes)
 	dw	bond12
 	db	'BULLET    $' 	; Wave Mate Bullet (80T, DS, DD, 790K, 1024 Bytes)
 	dw	bullet
-	db	'CASIO    $' 	; Casio FP-1100/FP-1020 (40T, DS, DD, 320K, 256 Bytes)
+	db	'CASIO     $' 	; Casio FP-1100/FP-1020 (40T, DS, DD, 320K, 256 Bytes)
 	dw	casio
-	db	'CPM-8640   $' 	; CP/M-86 v2 (40T, DS, DD, 360K, 512 Bytes)
+	db	'CPM-8640  $' 	; CP/M-86 v2 (40T, DS, DD, 360K, 512 Bytes)
 	dw	cpm8640
 	db	'CPM-8680  $' 	; CP/M-86 v2 (80T, DS, DD, 720K, 512 Bytes)
 	dw	cpm8680
@@ -309,7 +309,7 @@ startlist
 	dw	loweb1
 	db	'LOWE-B2   $'	; Lowe Electronics CP/M 2.2b (80T, DS, DD, 696K, 256 Bytes, 4K Block)
 	dw	loweb2
-	db	'MAGIC   $'	; Magic PBC-88 (40T, DS, DD, 390K, 512 Bytes)
+	db	'MAGIC     $'	; Magic PBC-88 (40T, DS, DD, 390K, 512 Bytes)
 	dw	magic
 	db	'MBC-1200  $'	; Sanyo MBC-1200/1250 (80T, DS, DD, 624K, 256 Bytes, Skew 3)
 	dw	mbc1200
@@ -351,7 +351,7 @@ startlist
 	dw	qx10
 	db	'RAINBOW   $'	; DEC Rainbow 100+ (80T, SS, DD, 390K, 512 Bytes, Skew 2)
 	dw	rainbow
-	db	'RAIR      $'
+	db	'RAIR      $'	; Rair Black Box (40T, SS, DD, 190K, 1024 Bytes, Skew 3)
 	dw	rair
 	db	'ROBO-D40  $' 	; Robotron PC 1715 Data (40T, SS, DD, 190K, 1024 Bytes, Data Disk)
 	dw	robod40
@@ -379,11 +379,11 @@ startlist
 	dw	tv802
 	db	'TRS80CPM  $'	; TRS-80 Model I/III/4/4P CP/M (40T, SS, DD, 180K, 512 Bytes)
 	dw	trs80cpm
-	db	"TRS80-LB  $"	; TRS-80 Model II Lifeboat (77T, SS, DD, 600K, 1024 Bytes, Skew 3)
+	db	'TRS80-LB  $'	; TRS-80 Model II Lifeboat (77T, SS, DD, 600K, 1024 Bytes, Skew 3)
 	dw 	trslb
-	db	"TRS80-FMG  $"	; ; TRS-80 Model II FMG (77T, SS, DD, 486K, 256 Bytes)
+	db	'TRS80-FMG $'	; TRS-80 Model II FMG (77T, SS, DD, 486K, 256 Bytes)
 	dw	trsfmg
-	db	"TRS80-PT  $"	; TRS-80 Model II/12/16 Pickles & Trout (77T, SS, DD, 600K, 512 Bytes)
+	db	'TRS80-PT  $'	; TRS-80 Model II/12/16 Pickles & Trout (77T, SS, DD, 600K, 512 Bytes)
 	dw	trspt
 	db	'VIS1050   $'	; Visual 1050 (80T, SS, DD, 390K, 512 Bytes)
 	dw	vis1050
@@ -391,9 +391,9 @@ startlist
 	dw	vortex		; Amstrad CPC Vortex (80T, DS, DD, 712K, 512 Bytes)
 	db	'XEROX820I $'	; Xerox 820 (40T, SS, SD, 82K, 128 Bytes, Skew 5)
 	dw	x820
-	db	'XEROX820II$'	; Xerox 820-II (40T, SS, DD, 164K, 256 Bytes, Skew 5)
+	db	'XER-820II $'	; Xerox 820-II (40T, SS, DD, 164K, 256 Bytes, Skew 5)
 	dw	x820ii
-	db	'Z-100'		; Zenith Z-100/Heath H-100 (40T, DS, DD, 320K, 512 Bytes)
+	db	'Z-100	   $'	; Zenith Z-100/Heath H-100 (40T, DS, DD, 320K, 512 Bytes)
 	dw	z100	
 	db	'ZORBA     $'	; Zorba (40T, DS, DD, 390K, 512 Bytes)
 	dw	zorba
@@ -415,6 +415,7 @@ startlist
 	dw	sisphus
 	db	'VIXEN     $'; Osborne Vixen (40T, DS, DD, 390K, 1024 Bytes, Skew 2)
 	dw	vixen
+	db	0		; end of list
 endlist
 
 ; Montezuma Micro 80T DS DATA (80T, DS, DD, 800K, 512 Bytes, Skew 2)
