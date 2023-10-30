@@ -279,7 +279,7 @@ startlist
 	dw	cpm8640
 	db	'CPM-8680  $' 	; CP/M-86 v2 (80T, DS, DD, 720K, 512 Bytes)
 	dw	cpm8680
-	db	'ELZET	   $'	; Elzet 80 (80T, DS, DD, 768K, 1024 Bytes)
+	db	'ELZET     $'	; Elzet 80 (80T, DS, DD, 768K, 1024 Bytes)
 	dw	elzet80
 	db	'EXIDY     $'	; Exidy Sorcerer (40T, SS, DD, 196K, 512 Bytes)
 	dw	exidy
@@ -393,7 +393,7 @@ startlist
 	dw	x820
 	db	'XER-820II $'	; Xerox 820-II (40T, SS, DD, 164K, 256 Bytes, Skew 5)
 	dw	x820ii
-	db	'Z-100	   $'	; Zenith Z-100/Heath H-100 (40T, DS, DD, 320K, 512 Bytes)
+	db	'Z-100     $'	; Zenith Z-100/Heath H-100 (40T, DS, DD, 320K, 512 Bytes)
 	dw	z100	
 	db	'ZORBA     $'	; Zorba (40T, DS, DD, 390K, 512 Bytes)
 	dw	zorba
