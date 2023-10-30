@@ -91,8 +91,6 @@ The length of the character string is limited to 10. The first entry is the defa
 | MAGIC         | Magic PBC-88 format                              | 40 tracks | Double-sided (DS) | Double density (DD) | 390K       | 512 Bytes   |      |
 | MBC-1200      | Sanyo MBC-1200/1250 format                        | 80 tracks | Double-sided (DS) | Double density (DD) | 624K       | 256 Bytes   | 3    |
 | MBC-1000      | Sanyo MBC-1000/1100 format                        | 40 tracks | Double-sided (DS) | Double density (DD) |
-| Format Name   | Description                                        | Capacity  | Side          | Density        | Capacity   | Sector Size | Skew |
-|---------------|----------------------------------------------------|-----------|---------------|----------------|------------|------------|------|
 | MBC-1000      | Sanyo MBC-1000/1100 format                        | 40 tracks | Double-sided (DS) | Double density (DD) | 312K       | 256 Bytes   | 3    |
 | MS-DOS        | MS-DOS format                                    | 80 tracks | Double-sided (DS) | Double density (DD) | 720K       | 1024 Bytes  |      |
 | MM-S40        | Montezuma Micro 40T Standard SYSTEM format        | 40 tracks | Single-sided (SS) | Double density (DD) | 170K       | 256 Bytes   | 2    |
@@ -125,8 +123,6 @@ The length of the character string is limited to 10. The first entry is the defa
 | S80-DD        | Klaus Kaempf CP/M 2.2x/3.0 System format          | 80 tracks | Double-sided (DS) | Double density (DD) | 768K       | 1024 Bytes  |      |
 | D80-DD        | Klaus Kaempf CP/M 2.2x/3.0 Data format            | 80 tracks | Double-sided (DS) | Double density (DD) | 800K       | 1024 Bytes  |      |
 | TV802         | Televideo 802 format                             | 40 tracks | Double-sided (DS) | Double density (DD) | 342K       | 256 Bytes   |
-| Format Name   | Description                                        | Capacity  | Side          | Density        | Capacity   | Sector Size | Skew |
-|---------------|----------------------------------------------------|-----------|---------------|----------------|------------|------------|------|
 | TRS80CPM      | TRS-80 Model I/III/4/4P CP/M format               | 40 tracks | Single-sided (SS) | Double density (DD) | 180K       | 512 Bytes   |      |
 | TRS80-LB      | TRS-80 Model II Lifeboat format                   | 77 tracks | Single-sided (SS) | Double density (DD) | 600K       | 1024 Bytes  | 3    |
 | TRS80-FMG     | TRS-80 Model II FMG format                        | 77 tracks | Single-sided (SS) | Double density (DD) | 486K       | 256 Bytes   |      |
