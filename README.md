@@ -49,86 +49,103 @@ The output of the possible disk formats was truncated in 'alien.com' after one l
 
 Referring to the source and look at the source code for more information.
 
-# ALIEN.COM 3.0
+# ALIEN.COM 3.1
 
  # List of implemented alien formats
 
-| Format      | Description                                                   |
-|-------------|---------------------------------------------------------------|
-| MM-D80      | Montezuma CP/M format: MM-D80 - exchange format via TRSTOOLS   |
-| ABC80       | Luxor ABC80 (40T, SS, DD, 152K, 256 Bytes, Skew 7)             |
-| ABC800      | Luxor ABC800 (80T, DS, DD, 760K, 1024 Bytes)                   |
-| ACTRIX      | Actrix Computer Corporation Access Computer (80T, DS, DD, 780K, 1024 Bytes, Skew 3) |
-| ALPHA-P3    | Triumph Adler alphaTronic P3 (80T, DS, DD, 790K, 1024 Bytes)   |
-| ALPHA-PC    | Triumph Adler alphaTronic PC (40T, DS, DD, 320K, 256 Bytes)    |
-| ASTER-3S    | Aster CT-80 System (80T, DS, DD, 780K, 1024 Bytes)             |
-| ALTOS       | Altos 5-15 (80T, DS, DD, 768K, 1024 Bytes)                     |
-| BOND-2      | Bondwell 2 (80T, SS, DD, 350K, 256 Bytes)                      |
-| BOND-12     | Bondwell 12 (80T, DS, DD, 768K, 1024 Bytes)                    |
-| BULLET      | Wave Mate Bullet (80T, DS, DD, 790K, 1024 Bytes)               |
-| CASIO       | Casio FP-1100/FP-1020 (40T, DS, DD, 320K, 256 Bytes)           |
-| CPM-8640    | CP/M-86 v2 (40T, DS, DD, 360K, 512 Bytes)                      |
-| CPM-8680    | CP/M-86 v2 (80T, DS, DD, 720K, 512 Bytes)                      |
-| ELZET       | Elzet 80 (80T, DS, DD, 768K, 1024 Bytes)                       |
-| EXIDY       | Exidy Sorcerer (40T, SS, DD, 196K, 512 Bytes)                   |
-| GDOS        | GDOS 2.4 (80T, DS, DD, 768K, 1024 Bytes)                        |
-| HOLTE-G3    | Thomas Holte CP/M 2.2c/3.0a (80T, DS, DD, 768K, 512 Bytes)      |
-| KAYPRO-2    | Kaypro II (40T, SS, DD, 196K, 512 Bytes)                        |
-| Kaypro-4    | Kaypro 4 & 10 (40T, DS, DD, 392K, 512 Bytes)                     |
-| EAGLE       | Eagle I/II (80T, SS, DD, 390K, 1024 Bytes, Skew 2)              |
-| HOLTEG2S    | Thomas Holte Genie IIs/Speedmaster CP/M 2.2a System (80T, SS, DD, 390K, 512 Bytes) |
-| LOBO256     | Lobo Systems 256K (80T, SS, DD, 256K, 512 Bytes)                |
-| LOBO512     | Lobo Systems 512K (80T, DS, DD, 512K, 512 Bytes)                |
-| LNW-256     | LNW Research lnw256 (40T, SS, DD, 166K, 256 Bytes, Skew 5)      |
-| LNW-512     | LNW Research lnw256 (40T, SS, DD, 332K, 512 Bytes, Skew 5)      |
-| LOWE-A1     | Lowe Electronics CP/M 2.2a (80T, SS, DD, 346K, 256 Bytes)       |
-| LOWE-A2     | Lowe Electronics CP/M 2.2a (80T, DS, DD, 696K, 256 Bytes)       |
-| LOWE-B1     | Lowe Electronics CP/M 2.2b (80T, SS, DD, 384K, 256 Bytes, 4K Block) |
-| LOWE-B2     | Lowe Electronics CP/M 2.2b (80T, DS, DD, 696K, 256 Bytes, 4K Block) |
-| MAGIC       | Magic PBC-88 (40T, DS, DD, 390K, 512 Bytes)                     |
-| MBC-1200    | Sanyo MBC-1200/1250 (80T, DS, DD, 624K, 256 Bytes,
-| MBC-1000    | Sanyo MBC-1000/1100 (40T, DS, DD, 312K, 256 Bytes, Skew 3)     |
-| MS-DOS      | MS-DOS (80T, DS, DD, 720K, 1024 Bytes)                         |
-| MM-S40      | Montezuma Micro 40T Standard SYSTEM (40T, SS, DD, 170K, 256 Bytes, Skew 2) |
-| MM-D40      | Montezuma Micro 40T Standard DATA (40T, SS, DD, 200K, 512 Bytes, Skew 2)   |
-| MM-S80      | Montezuma Micro 80T DS SYSTEM (80T, DS, DD, 710K, 256 Bytes, Skew 2)       |
-| MCCPM       | MCCP/M (80T, DS, DD, 800K, 1024 Bytes)                          |
-| MORROW      | Morrow Micro Decision (40T, SS, DD, 190K, 1024 Bytes, Skew 3) |
-| MONROE      | Monroe 1860 (40T, SS, DD, 190K, 1024 Bytes, Skew 3)             |
-| MD3         | Morrow Micro Decision MD3 (40T, DS, DD, 390K, 1024 Bytes, Skew 3)         |
-| NABUPC      | NABU PC (80T, DS, DD, 800K, 1024 Bytes)                         |
-| NEC-8800    | NEC PC-8800/8801 (40T, DS, DD, 306K, 256 Bytes)                 |
-| PROF#4      | Prof80 (Format IV: 80T, DS, DD, 770K, 512 Bytes, Skew 2)         |
-| OMIKRON     | Omikron Mapper I TRS-80 Model I/III (35T, SS, SD, 83K, 128 Bytes, Skew 4)           |
-| OR512       | Oettle & Reichler (80T, DS, DD, 702K, 512 Bytes, Skew 3)         |
-| OR1024      | Oettle & Reichler (80T, DS, DD, 702K, 1024 Bytes, Skew 3)        |
-| OSBORNE     | Osborne 1 (40T, SS, SD, 90K, 256 Bytes, Skew 2)                 |
-| OSBEXEC     | Osborne 2 Executive (40T, SS, DD, 185K, 1024 Bytes)             |
-| QX10        | Epson QX-10 (40T, DS, DD, 380K, 512 Bytes)                      |
-| RAINBOW     | DEC Rainbow 100+ (80T, SS, DD, 390K, 512 Bytes, Skew 2)         |
-| RAIR        | Rair                                                               |
-| ROBO-D40    | Robotron PC 1715 (40T, SS, DD, 190K, 1024 Bytes, Data Disk) |
-| ROBO-S40    | Robotron PC 1715 (40T, SS, DD, 190K, 1024 Bytes, System Disk) |
-| ROBO-D80    | Robotron PC 1715 (80T, DS, DD, 780K, 1024 Bytes, Data Disk) |
-| ROBO-S80    | Robotron PC 1715 (80T, DS, DD, 780K, 1024 Bytes, System Disk) |
-| RSCPM3      | Radio Shack TRS-80 Model 4/4P CP/M Plus (40T, SS, DD, 156K, 512 Bytes) |
-| DECROBIN    | DEC VT-180 "Robin" (40T, SS, DD, 171K, 512 Bytes, Skew 2)       |
-| SCHMIDTKE   | Schmidtke Genie I CP/M 2.2 System (80T, DS, DD, 768K, 1024 Bytes) |
-| SCHROEDER   | Gerald Schroeder Genie IIs CP/M 2.2 System (80T, DS, DD, 768K, 1024 Bytes) |
-| SOABAR      | Soabar CDX 31 (40T, DS, DD, 390K, 1024 Bytes)                   |
-| S80-DD      | Klaus Kaempf CP/M 2.2x/3.0 System (80T, DS, DD, 768K, 1024 Bytes) |
-| D80-DD      | Klaus Kaempf CP/M 2.2x/3.0 Data (80T, DS, DD, 800K, 1024 Bytes) |
-| TV802       | Televideo 802 (40T, DS, DD, 342K, 256 Bytes)                    |
-| TRS80CPM    | TRS-80 Model I/III/4/4P CP/M (40T, SS, DD, 180K, 512 Bytes)     |
-| TRS80-LB    | TRS-80 Model II Lifeboat (77T, SS, DD, 600K, 1024 Bytes, Skew 3) |
-| TRS80-FMG   | TRS-80 Model II FMG (77T, SS, DD, 486K, 256 Bytes)               |
-| TRS80-PT    | TRS-80 Model II/12/16 Pickles & Trout (77T, SS, DD, 600K, 512 Bytes) |
-| VIS1050     | Visual 1050 (80T, SS, DD, 390K, 512 Bytes)                      |
-| VORTEX      | Amstrad CPC Vortex (80T, DS, DD, 712K, 512 Bytes)               |
-| XEROX820I   | Xerox 820 (40T, SS, SD, 82K, 128 Bytes, Skew 5)                 |
-| XEROX820II  | Xerox 820-II (40T, SS, DD, 164K, 256 Bytes, Skew 5)              |
-| Z-100       | Zenith Z-100/Heath H-100 (40T, DS, DD, 320K, 512 Bytes)         |
-| ZORBA       | Zorba (40T, DS, DD, 390K, 512 Bytes)                            |
+# List of Implemented Alien Formats
+
+The length of the character string is limited to 10. The first entry is the default format, which is used if no format name is specified.
+
+| Format Name   | Description                                        | Capacity  | Side          | Density        | Capacity   | Sector Size | Skew |
+|---------------|----------------------------------------------------|-----------|---------------|----------------|------------|------------|------|
+| MM-D80        | MONTEZUMA CP/M format: MM-D80 - exchange format via TRSTOOLS | 80 tracks | Double-sided (DS) | Double density (DD) | 800K       | 512 Bytes   | 2    |
+| ABC80         | Luxor ABC80 format                                | 40 tracks | Single-sided (SS) | Double density (DD) | 152K       | 256 Bytes   | 7    |
+| ABC800        | Luxor ABC800 format                               | 80 tracks | Double-sided (DS) | Double density (DD) | 760K       | 1024 Bytes  |      |
+| ACTRIX        | Actrix Computer Corporation Access Computer format | 80 tracks | Double-sided (DS) | Double density (DD) | 780K       | 1024 Bytes  | 3    |
+| ALPHA-P3      | Triumph Adler alphaTronic P3 format               | 80 tracks | Double-sided (DS) | Double density (DD) | 790K       | 1024 Bytes  |      |
+| ALPHA-PC      | Triumph Adler alphaTronic PC format               | 40 tracks | Double-sided (DS) | Double density (DD) | 320K       | 256 Bytes   |      |
+| ASTER-3S      | Aster CT-80 System format                         | 80 tracks | Double-sided (DS) | Double density (DD) | 780K       | 1024 Bytes  |      |
+| ALTOS         | Altos 5-15 format                                 | 80 tracks | Double-sided (DS) | Double density (DD) | 768K       | 1024 Bytes  |      |
+| BOND-2        | Bondwell 2 format                                | 80 tracks | Single-sided (SS) | Double density (DD) | 350K       | 256 Bytes   |      |
+| BOND-12       | Bondwell 12 format                               | 80 tracks | Double-sided (DS) | Double density (DD) | 768K       | 1024 Bytes  |      |
+| BULLET        | Wave Mate Bullet format                           | 80 tracks | Double-sided (DS) | Double density (DD) | 790K       | 1024 Bytes  |      |
+| CASIO         | Casio FP-1100/FP-1020 format                      | 40 tracks | Double-sided (DS) | Double density (DD) | 320K       | 256 Bytes   |      |
+| CPM-8640      | CP/M-86 v2 format                                 | 40 tracks | Double-sided (DS) | Double density (DD) | 360K       | 512 Bytes   |      |
+| CPM-8680      | CP/M-86 v2 format                                 | 80 tracks | Double-sided (DS) | Double density (DD) | 720K       | 512 Bytes   |      |
+| ELZET         | Elzet 80 format                                  | 80 tracks | Double-sided (DS) | Double density (DD) | 768K       | 1024 Bytes  |      |
+| EXIDY         | Exidy Sorcerer format                            | 40 tracks | Single-sided (SS) | Double density (DD) | 196K       | 512 Bytes   |      |
+| GDOS          | GDOS 2.4 format                                  | 80 tracks | Double-sided (DS) | Double density (DD) | 720K       | 256 Bytes   |      |
+| HOLTE-G3      | Thomas Holte CP/M 2.2c/3.0a format               | 80 tracks | Double-sided (DS) | Double density (DD) | 768K       | 512 Bytes   |      |
+| KAYPRO-2      | Kaypro II format                                 | 40 tracks | Single-sided (SS) | Double density (DD) | 196K       | 512 Bytes   |      |
+| EAGLE         | Eagle I/II format                                | 80 tracks | Single-sided (SS) | Double density (DD) | 390K       | 1024 Bytes  | 2    |
+| HOLTEG2S      | Thomas Holte Genie IIs/Speedmaster format        | 80 tracks | Single-sided (SS) | Double density (DD) | 390K       | 512 Bytes   |      |
+| LOBO256       | Lobo Systems 256K format                         | 80 tracks | Single-sided (SS) | Double density (DD) | 256K       | 512 Bytes   |      |
+| LOBO512       | Lobo Systems 512K format                         | 80 tracks | Double-sided (DS) | Double density (DD) | 512K       | 512 Bytes   |      |
+| LNW-256       | LNW Research lnw256 format                      | 40 tracks | Single-sided (SS) | Double density (DD) | 166K       | 256 Bytes   | 5    |
+| LNW-512       | LNW Research lnw256 format                      | 40 tracks | Single-sided (SS) | Double density (DD) | 332K       | 512 Bytes   | 5    |
+| LOWE-A1       | Lowe Electronics CP/M 2.2a format                | 80 tracks | Single-sided (SS) | Double density (DD) | 346K       | 256 Bytes   |      |
+| LOWE-A2       | Lowe Electronics CP/M 2.2a format                | 80 tracks | Double-sided (DS) | Double density (DD) | 696K       | 256 Bytes   |      |
+| LOWE-B1       | Lowe Electronics CP/M 2.2b format                | 80 tracks | Single-sided (SS) | Double density (DD) | 384K       | 256 Bytes   | 4K Block |
+| LOWE-B2       | Lowe Electronics CP/M 2.2b format                | 80 tracks | Double-sided (DS) | Double density (DD) | 696K       | 256 Bytes   | 4K Block |
+| MAGIC         | Magic PBC-88 format                              | 40 tracks | Double-sided (DS) | Double density (DD) | 390K       | 512 Bytes   |      |
+| MBC-1200      | Sanyo MBC-1200/1250 format                        | 80 tracks | Double-sided (DS) | Double density (DD) | 624K       | 256 Bytes   | 3    |
+| MBC-1000      | Sanyo MBC-1000/1100 format                        | 40 tracks | Double-sided (DS) | Double density (DD) |
+| Format Name   | Description                                        | Capacity  | Side          | Density        | Capacity   | Sector Size | Skew |
+|---------------|----------------------------------------------------|-----------|---------------|----------------|------------|------------|------|
+| MBC-1000      | Sanyo MBC-1000/1100 format                        | 40 tracks | Double-sided (DS) | Double density (DD) | 312K       | 256 Bytes   | 3    |
+| MS-DOS        | MS-DOS format                                    | 80 tracks | Double-sided (DS) | Double density (DD) | 720K       | 1024 Bytes  |      |
+| MM-S40        | Montezuma Micro 40T Standard SYSTEM format        | 40 tracks | Single-sided (SS) | Double density (DD) | 170K       | 256 Bytes   | 2    |
+| MM-D40        | Montezuma Micro 40T Standard DATA format          | 40 tracks | Single-sided (SS) | Double density (DD) | 200K       | 512 Bytes   | 2    |
+| MM-S80        | Montezuma Micro 80T DS SYSTEM format              | 80 tracks | Double-sided (DS) | Double density (DD) | 710K       | 256 Bytes   | 2    |
+| MCCPM         | MCCP/M format                                    | 80 tracks | Double-sided (DS) | Double density (DD) | 800K       | 1024 Bytes  |      |
+| MORROW        | Morrow Micro Decision format                      | 40 tracks | Single-sided (SS) | Double density (DD) | 190K       | 1024 Bytes  | 3    |
+| MONROE        | Monroe 1860 format                               | 40 tracks | Single-sided (SS) | Double density (DD) | 190K       | 1024 Bytes  | 3    |
+| MD3           | Morrow Micro Decision MD3 format                  | 40 tracks | Double-sided (DS) | Double density (DD) | 390K       | 1024 Bytes  | 3    |
+| NABUPC        | NABU PC format                                   | 80 tracks | Double-sided (DS) | Double density (DD) | 800K       | 1024 Bytes  |      |
+| NEC-8800      | NEC PC-8800/8801 format                          | 40 tracks | Double-sided (DS) | Double density (DD) | 306K       | 256 Bytes   |      |
+| PROF#4        | Prof80 (Format IV) format                        | 80 tracks | Double-sided (DS) | Double density (DD) | 770K       | 512 Bytes   | 2    |
+| OMIKRON       | Omikron Mapper I TRS-80 Model I/III format        | 35 tracks | Single-sided (SS) | Single density (SD) | 83K        | 128 Bytes   | 4    |
+| OR512         | Oettle & Reichler format                         | 80 tracks | Double-sided (DS) | Double density (DD) | 702K       | 512 Bytes   | 3    |
+| OR1024        | Oettle & Reichler format                         | 80 tracks | Double-sided (DS) | Double density (DD) | 702K       | 1024 Bytes  | 3    |
+| OSBORNE       | Osborne 1 format                                 | 40 tracks | Single-sided (SS) | Single density (SD) | 90K        | 256 Bytes   | 2    |
+| OSBEXEC       | Osborne 2 Executive format                       | 40 tracks | Single-sided (SS) | Double density (DD) | 185K       | 1024 Bytes  |      |
+| QX10          | Epson QX-10 format                               | 40 tracks | Double-sided (DS) | Double density (DD) | 380K       | 512 Bytes   |      |
+| RAINBOW       | DEC Rainbow 100+ format                         | 80 tracks | Single-sided (SS) | Double density (DD) | 390K       | 512 Bytes   | 2    |
+| RAIR          | Rair Black Box format                            | 40 tracks | Single-sided (SS) | Double density (DD) | 190K       | 1024 Bytes  | 3    |
+| ROBO-D40      | Robotron PC 1715 Data format                     | 40 tracks | Single-sided (SS) | Double density (DD) | 190K       | 1024 Bytes  | Data Disk |
+| ROBO-S40      | Robotron PC 1715 Data format                     | 40 tracks | Single-sided (SS) | Double density (DD) | 190K       | 1024 Bytes  | System Disk |
+| ROBO-D80      | Robotron PC 1715 Data format                     | 80 tracks | Double-sided (DS) | Double density (DD) | 780K       | 1024 Bytes  | Data Disk |
+| ROBO-S80      | Robotron PC 1715 Data format                     | 80 tracks | Double-sided (DS) | Double density (DD) | 780K       | 1024 Bytes  | System Disk |
+| RSCPM3        | Radio Shack TRS-80 Model 4/4P CP/M Plus format    | 40 tracks | Single-sided (SS) | Double density (DD) | 156K       | 512 Bytes   |      |
+| DECROBIN      | DEC VT-180 "Robin" format                        | 40 tracks | Single-sided (SS) | Double density (DD) | 171K       | 512 Bytes   | 2    |
+| SCHMIDTKE     | Schmidtke Genie I CP/M 2.2 System format          | 80 tracks | Double-sided (DS) | Double density (DD) | 768K       | 1024 Bytes  |      |
+| SCHROEDER     | Gerald Schroeder Genie IIs CP/M 2.2 System format | 80 tracks | Double-sided (DS) | Double density (DD) | 768K       | 1024 Bytes  |      |
+| SOABAR        | Soabar CDX 31 format                             | 40 tracks | Double-sided (DS) | Double density (DD) | 390K       | 1024 Bytes  |      |
+| S80-DD        | Klaus Kaempf CP/M 2.2x/3.0 System format          | 80 tracks | Double-sided (DS) | Double density (DD) | 768K       | 1024 Bytes  |      |
+| D80-DD        | Klaus Kaempf CP/M 2.2x/3.0 Data format            | 80 tracks | Double-sided (DS) | Double density (DD) | 800K       | 1024 Bytes  |      |
+| TV802         | Televideo 802 format                             | 40 tracks | Double-sided (DS) | Double density (DD) | 342K       | 256 Bytes   |
+| Format Name   | Description                                        | Capacity  | Side          | Density        | Capacity   | Sector Size | Skew |
+|---------------|----------------------------------------------------|-----------|---------------|----------------|------------|------------|------|
+| TRS80CPM      | TRS-80 Model I/III/4/4P CP/M format               | 40 tracks | Single-sided (SS) | Double density (DD) | 180K       | 512 Bytes   |      |
+| TRS80-LB      | TRS-80 Model II Lifeboat format                   | 77 tracks | Single-sided (SS) | Double density (DD) | 600K       | 1024 Bytes  | 3    |
+| TRS80-FMG     | TRS-80 Model II FMG format                        | 77 tracks | Single-sided (SS) | Double density (DD) | 486K       | 256 Bytes   |      |
+| TRS80-PT      | TRS-80 Model II/12/16 Pickles & Trout format      | 77 tracks | Single-sided (SS) | Double density (DD) | 600K       | 512 Bytes   |      |
+| VIS1050       | Visual 1050 format                               | 80 tracks | Single-sided (SS) | Double density (DD) | 390K       | 512 Bytes   |      |
+| VORTEX        | Amstrad CPC Vortex format                         | 80 tracks | Double-sided (DS) | Double density (DD) | 712K       | 512 Bytes   |      |
+| XEROX820I     | Xerox 820 format                                 | 40 tracks | Single-sided (SS) | Single density (SD) | 82K        | 128 Bytes   | 5    |
+| XER-820II     | Xerox 820-II format                              | 40 tracks | Single-sided (SS) | Double density (DD) | 164K       | 256 Bytes   | 5    |
+| Z-100         | Zenith Z-100/Heath H-100 format                   | 40 tracks | Double-sided (DS) | Double density (DD) | 320K       | 512 Bytes   |      |
+| ZORBA         | Zorba format                                     | 40 tracks | Double-sided (DS) | Double density (DD) | 390K       | 512 Bytes   |      |
+| ALPHA-P2      | Triumph Adler alphaTronic P2 format               | 40 tracks | Single-sided (SS) | Double density (DD) | 320K       | 256 Bytes   |      |
+| ALSPA         | Alspa format                                    | 77 tracks | Single-sided (SS) | Double density (DD) | 600K       | 1024 Bytes  |      |
+| AMPRO         | Ampro Little Board Z80 format                    | 40 tracks | Single-sided (SS) | Double density (DD) | 320K       | 256 Bytes   |      |
+| HEATH         | Heath H89, Magnolia CP/M format                   | 40 tracks | Single-sided (SS) | Double density (DD) | 166K       | 512 Bytes   |      |
+| JOYCE         | Amstrad PCW 8256 "Joyce" format                   | 40 tracks | Single-sided (SS) | Double density (DD) | 175K       | 512 Bytes   |      |
+| MOLE-S9       | Molecular Series 9 format                        | 40 tracks | Double-sided (DS) | Double density (DD) | 342K       | 512 Bytes   |      |
+| PERTEC        | Pertec PCC-2000 format                           | 77 tracks | Single-sided (SS) | Double density (DD) | 480K       | 256 Bytes   | 5    |
+| SISPHUS       | Sisyphus format                                  | 77 tracks | Single-sided (SS) | Double density (DD) | 450K       | 128 Bytes   |      |
+| VIXEN         | Osborne Vixen format                            | 40 tracks | Double-sided (DS) | Double density (DD) | 390K       | 1024 Bytes  | 2    |
 
 
 ## Drop a Star ⭐
