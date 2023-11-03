@@ -34,6 +34,7 @@ Default format is MM-D80 aka MONTEZUMA CP/M format.
 
 ## Change Log
 
+- 11/03/2023: bugs reported by Jens Guenther and ZASM & M80 compatibility edits
 - 03/19/2023: Possible alien disk formats limited to 80 characters in total, reduced to 8 bytes per name compared to the original 10 bytes.
 - 03/26/2023: Updated MM-D80 skew table, fixed a bug.
 - 05/14/2023: Additional formats added by Jens Guenther.
@@ -49,7 +50,7 @@ The output of the possible disk formats was truncated in 'alien.com' after one l
 
 Referring to the source and look at the source code for more information.
 
-# ALIEN.COM 3.1
+# ALIEN.COM 3.2
 
  # List of implemented alien formats
 
