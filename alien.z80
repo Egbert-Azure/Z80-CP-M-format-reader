@@ -99,7 +99,7 @@ loopx	ld a, (de)       ; has the end of the name been reached?
 	inc de
 	jr loopx         ; and continue
 
-dernicht
+dernicht:
 	ld hl, (buff)    ; reset HL to the beginning of the buffer
 	ld bc, 13        ; move to the end of the current entry
 	add hl, bc
@@ -109,13 +109,13 @@ dernicht
 
 ; If an incorrect foreign format name is entered, the list of all valid names is shown.
 
-falsename              ; Subroutine for incorrect foreign format name
+falsename:              ; Subroutine for incorrect foreign format name
     ld de, error       ; Error message string
     ld c, WRITESTR     ; BDOS-Call #9, output string
     call BDOS
     ld hl,startlist   ; First element in the list of valid names,
 
-loop
+loop:		   	  ; Output all names in the list
     	push hl           ; Save HL
     	ex de, hl         ; DE <--> HL
     	ld c, WRITESTR    ; BDOS-Call #9, output string
@@ -134,7 +134,7 @@ loop
 
 ; EINSTELL: The respective parameter block is transferred to RAM.
 
-einstell
+einstell:
     ld c,DIRBIOS      ; First, the address of the DRIVETABLE is retrieved
                       ; via a BDOS-Call, where the addresses of all DPHs are stored.
     ld de,biospb      ; A parameter block is passed to the BDOS-Call.
@@ -209,7 +209,7 @@ einstell
 	call BDOS
 
 ; List of character strings to output
-hallo	db	cr,lf,esc,'R','ALIEN.COM - Version 3.1 - September 2023',esc,'S'
+hallo	db	cr,lf,esc,'R','ALIEN.COM - Version 3.2 - November 2023',esc,'S'
 	db	cr, lf,'sets drive P to alien disk formats on Genie IIIs with Holte CP/M +',cr, lf,'$'
 error 	db 	cr, lf,'Incorrect format name specified!',cr, lf
 	db	'The following format names are allowed:',cr,lf,cr,lf,esc,'X','$'
@@ -222,7 +222,7 @@ nambuff	ds	10 	; the selected name  is saved here to prevent overwriting by CP/M
 buff        dw      0000h
 buff2       dw      0000h      ; contains the address of the XDPH of LW P
 
-biospb                         ; The BIOS PARAMETER BLOCK must be specified
+biospb:                        ; The BIOS PARAMETER BLOCK must be specified
 fnum        db      22         ; when a direct BIOS call is made through BDOS-Call 50
 
 ;
@@ -250,7 +250,7 @@ dphend                          ; End of this buffer
 ; The length of the character string is limited to 10.
 ; The first entry is the default format, which is used if no format name is specified.
 
-startlist
+startlist:
 	db	'MM-D80    $'	; first entry is default - MONTEZUMA CP/M format: MM-D80 - exchange format via TRSTOOLS
 	dw	mmd80		; Montezuma Micro 80T DS DATA (80T, DS, DD, 800K, 512 Bytes, Skew 2)
 	db	'ABC80     $' 	; Luxor ABC80 (40T, SS, DD, 152K, 256 Bytes, Skew 7)
