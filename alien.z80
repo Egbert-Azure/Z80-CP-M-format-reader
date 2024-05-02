@@ -413,8 +413,10 @@ startlist:
 	dw	pertec
 	db	'SISPHUS   $'	; Sisyphus (77T, SS, DD, 450K, 128 Bytes)
 	dw	sisphus
-	db	'VIXEN     $'; Osborne Vixen (40T, DS, DD, 390K, 1024 Bytes, Skew 2)
+	db	'VIXEN     $'	; Osborne Vixen (40T, DS, DD, 390K, 1024 Bytes, Skew 2)
 	dw	vixen
+	db	'NEWDOS80  $'	;  NewDOS/80 (80T, DS, DD, 640K, 512 Bytes
+	dw	newdos80	; 
 	db	0		; end of list
 endlist
 
@@ -2507,5 +2509,29 @@ vixen   dw      0050h           ; SPT : 128 byte records / track
 ; and are removed to be tested in the future
 ; NewDOS/80 (80T, DS, DD, 640K, 512 Bytes)
 ; TRS80 CP/M (80T, DS, DD, 640K, 512 Bytes)
+
+; NewDOS/80 (80T, DS, DD, 640K, 512 Bytes)
+newdos80 dw      0040h           ; SPT : 128 byte records / track  
+         db        04h           ; BSH : block shift   
+         db        0Fh           ; BSM : block mask
+         db        01h           ; EXM : extend mask
+         dw      02FFh           ; DSM : maximum block number 
+         dw      01FFh           ; DRM : maximum directory entry number
+         db       0C0h           ; AL0 : allocation vector 0
+         db        00h           ; AL1 : allocation vector 1
+         dw      0020h           ; CKS : checksum size
+         dw        01h           ; OFF : offset for system tracks
+         db        03h           ; PSH : physical sector size shift
+         db        07h           ; PHM : physical sector size mask
+
+         db        01111000b     ; Byte 1 of drive control table   
+         db        11000000b     ; Byte 2 of drive control table
+         db        1             ; interleavingfactor 
+         db        16            ; sector count / track
+         db        80            ; number of usable tracks
+
+         db        16            ; length of the skew table
+                                 ; skew table
+         db       0,4,8,12,1,5,9,13,2,6,10,14,3,7,11,15
 
 end	start
