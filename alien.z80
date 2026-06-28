@@ -9,7 +9,8 @@
 ;* 										*
 ;* 		Update	for sdltrs emulator (c) 2023 				*
 ;* 		first assembler code since 30yrs E. Schroeer 			*
-;*	 with crowd knowledge of Jens Guenther & Fritz Chwolka 	:)		*
+;*	 added additional CP/M formats with crowd knowledge from 
+;* 		Jens Guenther & Fritz Chwolka 	:)				*
 ;* 			added: 							*
 ;*			TRS80 format: TRS80					*
 ;*			MONTEZUMA CP/M format: MM-D80				*
@@ -27,9 +28,7 @@
 ;* 		updated MM-D80 skew table fixed the bug				*
 ;*					05/14/2023				*
 ;*		additional formats added by Jens Guenther			*
-;*	some code improvements by Egbert Schroeer 05/24/2023			*
-;* 	Testing Github Copilot to write some code improvement, 			*
-;*	thanks to all contributors						*	
+;*	some code improvements by Egbert Schroeer 05/24/2023			*						*	
 ;*	See README.MD for more details						*
 ;********************************************************************************
 ; Here is a brief explanation of what each parameter means:
