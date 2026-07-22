@@ -282,8 +282,6 @@ startlist:
 	dw	elzet80
 	db	'EXIDY     $'	; Exidy Sorcerer (40T, SS, DD, 196K, 512 Bytes)
 	dw	exidy
-	db	'GDOS      $'	; GDOS 2.4 (80T, DS, DD, 720K, 256 Bytes)
-	dw	gdos		
 	db	'HOLTE-G3  $'	; Thomas Holte CP/M 2.2c/3.0a (80T, DS, DD, 768K, 512 Bytes)
 	dw	holteg3
 	db	'KAYPRO-2  $'	; Kaypro II (40T, SS, DD, 196K, 512 Bytes)
@@ -414,8 +412,6 @@ startlist:
 	dw	sisphus
 	db	'VIXEN     $'	; Osborne Vixen (40T, DS, DD, 390K, 1024 Bytes, Skew 2)
 	dw	vixen
-	db	'NEWDOS80  $'	;  NewDOS/80 (80T, DS, DD, 640K, 512 Bytes
-	dw	newdos80	; 
 	db	0		; end of list
 endlist
 
@@ -2032,32 +2028,6 @@ cpm8680	dw	0048h		; SPT : 128 byte records / track
 	db	  18		; length of the skew table
 				; skew table
 	db	  0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17
-
-; GDOS 2.4 (80T DSDD (80T DS, DD)
-gdos	dw	0048h		; SPT : 128 byte records / track
-	db	  06h		; BSH : block shift
-	db	  3fh		; BSM : block mask
-	db	  07h		; EXM : extend mask
-	dw	0059h		; DSM : maximum block number
-	dw	00ffh		; DRM : maximum directory entry number
-	db	 080h		; AL0 : allocation vector 0
-	db	  00h		; AL1 : allocation vector 1
-	dw	0040h		; CKS : checksum size
-	dw	  00h		; OFF : offset for system tracks
-	db	  01h		; PSH : physical sector size shift
-	db	01h		; PHM : physical sector size mask
-	
-	db	  60h		; Byte 1 der drive control table
-	db	40h		; 256 Bytes / sector
-	
-	db	  02		; interleavingfaktor
-	db	  36		; sector count / track
-	db	  80		; number of usable tracks
-	db	  51		; length of the skew table
-				; Skewtabelle
-	db	  0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19
-	db	  20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36
-	db	  37,38,39,40,41,42,43,44,45,46,47,48,49,50
 
 ; TRS-80 Model I/III/4/4P CP/M (40T, SS, DD, 180K, 512 Bytes)
 trs80cpm dw 0040h       ; SPT : 64 byte records / track

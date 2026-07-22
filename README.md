@@ -76,7 +76,6 @@ The length of the character string is limited to 10. The first entry is the defa
 | CPM-8680      | CP/M-86 v2 format                                 | 80 tracks | Double-sided (DS) | Double density (DD) | 720K       | 512 Bytes   |      |
 | ELZET         | Elzet 80 format                                  | 80 tracks | Double-sided (DS) | Double density (DD) | 768K       | 1024 Bytes  |      |
 | EXIDY         | Exidy Sorcerer format                            | 40 tracks | Single-sided (SS) | Double density (DD) | 196K       | 512 Bytes   |      |
-| GDOS          | GDOS 2.4 format                                  | 80 tracks | Double-sided (DS) | Double density (DD) | 720K       | 256 Bytes   |      |
 | HOLTE-G3      | Thomas Holte CP/M 2.2c/3.0a format               | 80 tracks | Double-sided (DS) | Double density (DD) | 768K       | 512 Bytes   |      |
 | KAYPRO-2      | Kaypro II format                                 | 40 tracks | Single-sided (SS) | Double density (DD) | 196K       | 512 Bytes   |      |
 | EAGLE         | Eagle I/II format                                | 80 tracks | Single-sided (SS) | Double density (DD) | 390K       | 1024 Bytes  | 2    |
