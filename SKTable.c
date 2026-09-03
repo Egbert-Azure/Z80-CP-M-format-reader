@@ -1,3 +1,14 @@
+/*
+ * SKTable.c — offline scratch utility to compute a candidate skew table
+ * for hand-transcription into an alien.z80 format block.
+ *
+ * Copyright (c) 1992 Volker Dose, Egbert H. Schroeer (as FREMD.COM)
+ * Copyright (c) 2023-2026 Egbert H. Schroeer
+ * Additional format definitions contributed by Jens Guenther.
+ *
+ * GPL-3.0-only. See LICENSE.
+ */
+
 #include <stdio.h>
 
 #define SKEW_TABLE_LENGTH (32 * 3)
